@@ -1,0 +1,422 @@
+[
+ {
+  "id": "C-1",
+  "tema": "Validación",
+  "enunciado": "En la validación cruzada de N pliegues, ¿qué significa que los pliegues sean «estratificados»?",
+  "opciones": [
+   "Que los pliegues se ordenan de mayor a menor tamaño",
+   "Que cada pliegue conserva la proporción de clases del conjunto completo",
+   "Que cada pliegue contiene una sola clase",
+   "Que los datos se escalan dentro de cada pliegue"
+  ],
+  "correcta": 1,
+  "explicacion": "Estratificar mantiene en cada pliegue la misma proporción de clases que en el conjunto original. Sin eso, en un conjunto ordenado por clase un pliegue podría quedar con una sola clase. En scikit-learn, cv=5 con un clasificador ya usa StratifiedKFold.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-2",
+  "tema": "Validación",
+  "enunciado": "Usted reserva el 20 % de los datos como prueba final, hace validación cruzada sobre el 80 % restante para escoger el modelo, y el resultado no le gusta. Entonces mira la prueba final, cambia un hiperparámetro y vuelve a medir en ella. ¿Qué problema tiene eso?",
+  "opciones": [
+   "Ninguno, para eso está la prueba final",
+   "Que la prueba final deja de ser independiente y el resultado queda optimista",
+   "Que hay que volver a escalar los datos",
+   "Que la validación cruzada ya no sirve"
+  ],
+  "correcta": 1,
+  "explicacion": "Si se toma una decisión mirando la prueba final, esta pasó a influir en el modelo y deja de estimar el desempeño con datos nuevos. La prueba final se mira UNA sola vez.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-3",
+  "tema": "Validación",
+  "enunciado": "¿Cuál es la principal desventaja de la validación cruzada de N pliegues frente al Holdout?",
+  "opciones": [
+   "Da un resultado menos confiable",
+   "No permite calcular la desviación del resultado",
+   "Cuesta N veces más tiempo de cómputo",
+   "No se puede usar con clasificación"
+  ],
+  "correcta": 2,
+  "explicacion": "Hay que entrenar N modelos en lugar de uno. Se gana confiabilidad y se paga con tiempo de cómputo; con modelos que tardan horas puede ser inviable.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-4",
+  "tema": "Validación",
+  "enunciado": "¿Por qué el escalado y la imputación deben ir DENTRO de un Pipeline cuando se usa validación cruzada?",
+  "opciones": [
+   "Porque así el código queda más corto",
+   "Porque si se ajustan antes, el pliegue de validación influye en la transformación y hay fuga de datos",
+   "Porque scikit-learn lo exige",
+   "Porque de lo contrario los pliegues quedan desbalanceados"
+  ],
+  "correcta": 1,
+  "explicacion": "Si la media del escalador se calcula con todos los datos, incluye los del pliegue de validación: ese pliegue ya influyó en el modelo. Con Pipeline, cada pliegue reajusta las transformaciones desde cero.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-5",
+  "tema": "PCA",
+  "enunciado": "Antes de aplicar PCA, ¿por qué conviene normalizar las características?",
+  "opciones": [
+   "Para que el algoritmo corra más rápido",
+   "Porque si no, las características con valores más grandes dominan los primeros componentes",
+   "Porque PCA no funciona con números negativos",
+   "Para que los componentes queden ortogonales"
+  ],
+  "correcta": 1,
+  "explicacion": "PCA busca las direcciones de máxima varianza. Sin normalizar, una característica medida en miles aporta más varianza que una medida en unidades, solo por su escala, no por su información.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-6",
+  "tema": "PCA",
+  "enunciado": "Aplica PCA conservando TODAS las componentes (por ejemplo, 8 de 8) con whiten=False. ¿Qué efecto tiene sobre un modelo basado en distancias como KNN?",
+  "opciones": [
+   "Mejora mucho el resultado",
+   "Lo empeora siempre",
+   "Prácticamente ninguno: es solo una rotación y las distancias se conservan",
+   "Elimina el ruido de los datos"
+  ],
+  "correcta": 2,
+  "explicacion": "Sin reducir componentes y sin blanquear, PCA solo rota los ejes. Las distancias entre puntos no cambian, así que KNN da el mismo resultado.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-7",
+  "tema": "PCA",
+  "enunciado": "¿Qué hace la opción whiten=True en el PCA de scikit-learn?",
+  "opciones": [
+   "Elimina las componentes con poca varianza",
+   "Divide cada componente por su desviación, dejando todas con varianza 1",
+   "Normaliza los datos antes de calcular los componentes",
+   "Convierte los datos a blanco y negro"
+  ],
+  "correcta": 1,
+  "explicacion": "Blanquear rota y además reescala: la matriz de covarianza queda igual a la identidad. El riesgo es que amplifica las componentes de poca varianza, que suelen ser ruido.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-8",
+  "tema": "PCA",
+  "enunciado": "¿Cómo se escoge razonablemente el número de componentes a conservar?",
+  "opciones": [
+   "El que dé el mayor coeficiente de silueta",
+   "El menor número que conserve un porcentaje objetivo de la varianza acumulada (por ejemplo 95 %)",
+   "Siempre dos, para poder graficar",
+   "El número de clases del problema"
+  ],
+  "correcta": 1,
+  "explicacion": "Se mira la curva de varianza acumulada y se toma el k más pequeño que alcance el umbral. En scikit-learn se puede pedir directamente con PCA(n_components=0.95).",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-9",
+  "tema": "Redes neuronales",
+  "enunciado": "En una red neuronal para clasificación multiclase, ¿qué hace la función softmax en la capa de salida?",
+  "opciones": [
+   "Convierte las salidas en ceros y unos",
+   "Convierte las salidas en una distribución de probabilidad que suma 1",
+   "Elimina las salidas negativas",
+   "Normaliza las entradas de la red"
+  ],
+  "correcta": 1,
+  "explicacion": "Softmax toma los valores z de la capa de salida y los convierte en probabilidades positivas que suman 1. Después, argmax escoge la clase ganadora.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-10",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Por qué no basta con poner una sigmoide en cada salida y umbralizar en 0,5 para un problema de 4 clases?",
+  "opciones": [
+   "Porque la sigmoide no existe para más de dos clases",
+   "Porque las salidas son independientes: pueden pasar dos del umbral o ninguna, y no suman 1",
+   "Porque la sigmoide es más lenta que softmax",
+   "Porque hay que usar ReLU en la salida"
+  ],
+  "correcta": 1,
+  "explicacion": "Con sigmoides independientes cada salida decide por su cuenta. Pueden ganar dos clases a la vez, o ninguna, y los valores no forman una distribución de probabilidad.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-11",
+  "tema": "Redes neuronales",
+  "enunciado": "En una red neuronal usada para REGRESIÓN, ¿qué activación lleva la capa de salida?",
+  "opciones": [
+   "Softmax",
+   "Sigmoide",
+   "ReLU",
+   "Ninguna: la salida es lineal"
+  ],
+  "correcta": 3,
+  "explicacion": "Como la respuesta es un número en las unidades del problema, la salida se deja sin activación. En scikit-learn se ve como out_activation_ = 'identity'.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-12",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Por qué una sola neurona no puede resolver la función XOR?",
+  "opciones": [
+   "Porque la XOR tiene cuatro entradas",
+   "Porque la sigmoide no es derivable",
+   "Porque una neurona traza una sola frontera recta y la XOR no es linealmente separable",
+   "Porque faltan datos de entrenamiento"
+  ],
+  "correcta": 2,
+  "explicacion": "Una neurona calcula una combinación lineal y la pasa por una activación: su frontera de decisión es una recta. Los puntos de la XOR no se pueden separar con una sola recta; hace falta una capa oculta.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-13",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Qué aporta una capa oculta en una red neuronal?",
+  "opciones": [
+   "Acelera el entrenamiento",
+   "Transforma los datos a un espacio donde sí pueden separarse linealmente",
+   "Reduce el número de parámetros",
+   "Evita tener que normalizar los datos"
+  ],
+  "correcta": 1,
+  "explicacion": "La capa oculta reacomoda los datos. En la XOR, después de la capa oculta los puntos quedan en posiciones donde una sola recta ya los separa.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-14",
+  "tema": "Métricas",
+  "enunciado": "¿Qué significa que el R² de un modelo en el conjunto de prueba sea negativo?",
+  "opciones": [
+   "Que hubo un error de cálculo",
+   "Que el modelo predice peor que simplemente predecir la media",
+   "Que las predicciones son negativas",
+   "Que el modelo está perfectamente ajustado"
+  ],
+  "correcta": 1,
+  "explicacion": "R² = 0 equivale a predecir siempre la media. Un valor negativo significa que el modelo lo hace todavía peor que eso. Es perfectamente posible en prueba y es una señal de alarma.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-15",
+  "tema": "Métricas",
+  "enunciado": "Dos modelos predicen el mismo conjunto. El modelo A tiene MAE 10 y RMSE 11; el modelo B tiene MAE 10 y RMSE 30. ¿Qué se puede concluir?",
+  "opciones": [
+   "El modelo B es mejor porque tiene más RMSE",
+   "El modelo B tiene algunos errores muy grandes, aunque en promedio se equivoque igual",
+   "Los dos modelos son idénticos",
+   "El modelo A tiene valores atípicos"
+  ],
+  "correcta": 1,
+  "explicacion": "El RMSE eleva los errores al cuadrado, así que crece mucho con los errores grandes. Un RMSE muy por encima del MAE delata errores grandes y aislados.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-16",
+  "tema": "Métricas",
+  "enunciado": "¿Cuándo NO conviene usar el MAPE (error porcentual absoluto medio)?",
+  "opciones": [
+   "Cuando los datos tienen muchas características",
+   "Cuando algún valor real es cero o muy cercano a cero",
+   "Cuando el modelo es una red neuronal",
+   "Cuando hay más de dos clases"
+  ],
+  "correcta": 1,
+  "explicacion": "El MAPE divide por el valor real. Si es cero no está definido, y si es muy pequeño el porcentaje se dispara aunque el error absoluto sea mínimo.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-17",
+  "tema": "Métricas",
+  "enunciado": "En un problema de clasificación con 95 % de muestras de una clase y 5 % de la otra, un modelo que siempre predice la clave mayoritaria obtiene 95 % de exactitud. ¿Qué métrica revela mejor que el modelo es inútil?",
+  "opciones": [
+   "La exactitud (accuracy)",
+   "El R²",
+   "El F1 o el MCC sobre la clase minoritaria",
+   "El coeficiente de silueta"
+  ],
+  "correcta": 2,
+  "explicacion": "Ese modelo nunca detecta la clase minoritaria, así que su F1 sobre esa clase es 0. El F1 y el MCC sí reflejan el fracaso; la exactitud lo esconde.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-18",
+  "tema": "Métricas",
+  "enunciado": "El residual se define como valor real menos valor predicho. Si el histograma de residuales está desplazado hacia valores positivos, ¿qué ocurre?",
+  "opciones": [
+   "El modelo sobrestima sistemáticamente",
+   "El modelo subestima sistemáticamente",
+   "El modelo está sobreajustado",
+   "El modelo tiene varianza alta"
+  ],
+  "correcta": 1,
+  "explicacion": "Residual positivo significa real mayor que predicho, es decir que el modelo se queda corto: subestima.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-19",
+  "tema": "Selección de modelos",
+  "enunciado": "¿Para qué sirve una línea base (por ejemplo DummyClassifier) al comparar modelos?",
+  "opciones": [
+   "Para acelerar el entrenamiento",
+   "Para saber qué resultado es el mínimo aceptable antes de decir que un modelo aporta",
+   "Para imputar los datos faltantes",
+   "Para escoger los hiperparámetros"
+  ],
+  "correcta": 1,
+  "explicacion": "La línea base responde sin aprender nada. Si un modelo no la supera claramente, no está aportando, por mucho que su métrica suene alta.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-20",
+  "tema": "Selección de modelos",
+  "enunciado": "Compara siete modelos con los mismos 5 pliegues. El mejor tiene F1 = 0,720 ± 0,041 y el segundo 0,710 ± 0,037. ¿Qué es lo más razonable concluir?",
+  "opciones": [
+   "Que el primero es claramente superior",
+   "Que están empatados y hay que desempatar con otro criterio",
+   "Que hay que repetir todo con más pliegues",
+   "Que el segundo modelo está sobreajustado"
+  ],
+  "correcta": 1,
+  "explicacion": "La diferencia (0,010) es mucho menor que la desviación entre pliegues (~0,04). Están empatados y conviene decidir por tiempo de cómputo, interpretabilidad o simplicidad.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-21",
+  "tema": "Selección de modelos",
+  "enunciado": "¿Qué hace GridSearchCV?",
+  "opciones": [
+   "Escoge automáticamente el mejor algoritmo entre todos los de scikit-learn",
+   "Prueba todas las combinaciones de una rejilla de hiperparámetros, evaluando cada una con validación cruzada",
+   "Reduce la dimensionalidad antes de entrenar",
+   "Divide los datos en entrenamiento y prueba"
+  ],
+  "correcta": 1,
+  "explicacion": "Recorre el producto cartesiano de la rejilla y, para cada combinación, hace la validación cruzada completa. Por eso el costo crece tan rápido: combinaciones × pliegues entrenamientos.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-22",
+  "tema": "Selección de modelos",
+  "enunciado": "¿Cuándo conviene RandomizedSearchCV en lugar de GridSearchCV?",
+  "opciones": [
+   "Cuando hay pocos hiperparámetros y pocos valores",
+   "Cuando la rejilla completa es demasiado grande para el tiempo disponible",
+   "Cuando los datos tienen faltantes",
+   "Cuando el problema es no supervisado"
+  ],
+  "correcta": 1,
+  "explicacion": "Con muchos hiperparámetros la rejilla completa explota. La búsqueda al azar explora con un presupuesto fijo y, como normalmente pocos hiperparámetros importan de verdad, suele llegar casi igual de lejos.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-23",
+  "tema": "Selección de modelos",
+  "enunciado": "Una librería de AutoML encuentra un modelo con F1 = 0,738 frente a 0,729 de su SVM ajustada a mano, cuya desviación entre pliegues es 0,049. ¿Qué es lo más defendible?",
+  "opciones": [
+   "Usar el AutoML, porque la métrica es mayor",
+   "Quedarse con la SVM: la ventaja es mucho menor que el ruido y el modelo es más simple de explicar",
+   "Repetir el AutoML con más tiempo hasta que gane por más",
+   "Promediar los dos modelos"
+  ],
+  "correcta": 1,
+  "explicacion": "Una ventaja de 0,009 frente a una desviación de 0,049 es ruido. Entre dos modelos empatados conviene el más simple, que es más fácil de explicar y de mantener.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-24",
+  "tema": "Series de tiempo",
+  "enunciado": "¿Por qué NO se puede usar train_test_split al azar en una serie de tiempo?",
+  "opciones": [
+   "Porque los datos no están normalizados",
+   "Porque el modelo entrenaría con datos del futuro para predecir el pasado: es fuga de datos",
+   "Porque las series de tiempo no tienen etiquetas",
+   "Porque hay demasiadas muestras"
+  ],
+  "correcta": 1,
+  "explicacion": "El orden importa. Si una muestra posterior cae en entrenamiento y una anterior en prueba, el modelo está usando información del futuro. La partición se hace por fecha.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-25",
+  "tema": "Series de tiempo",
+  "enunciado": "¿Cuál es la línea base obligatoria al predecir una serie de tiempo?",
+  "opciones": [
+   "Predecir siempre cero",
+   "Predecir el promedio histórico",
+   "La predicción ingenua: el valor siguiente es igual al último observado",
+   "Una red LSTM pequeña"
+  ],
+  "correcta": 2,
+  "explicacion": "La predicción ingenua ŷ(t+1) = y(t) es casi gratis y en muchas series es dificilísima de superar. Si el modelo no le gana, no aporta.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-26",
+  "tema": "Series de tiempo",
+  "enunciado": "Entrena una red para predecir el valor de una serie con tendencia creciente, y en prueba obtiene R² negativo. ¿Cuál es la causa más probable?",
+  "opciones": [
+   "Faltan épocas de entrenamiento",
+   "La red es demasiado pequeña",
+   "Los valores de prueba están fuera del rango visto en el entrenamiento y la red no extrapola",
+   "Hay que cambiar la función de activación"
+  ],
+  "correcta": 2,
+  "explicacion": "Una red interpola pero no extrapola. Con tendencia, todo el tramo de prueba queda por encima de lo visto. La solución es predecir el CAMBIO (la diferencia) y reconstruir sumando.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-27",
+  "tema": "Series de tiempo",
+  "enunciado": "¿Qué ventaja tiene predecir la diferencia y(t) − y(t−1) en lugar del valor y(t)?",
+  "opciones": [
+   "Que se necesitan menos datos",
+   "Que la serie de diferencias no tiene tendencia, así que prueba cae en el mismo rango que entrenamiento",
+   "Que elimina la estacionalidad",
+   "Que permite usar clasificación en lugar de regresión"
+  ],
+  "correcta": 1,
+  "explicacion": "Al diferenciar se quita la tendencia. Los valores de prueba quedan dentro del rango que la red vio al entrenar y el problema deja de requerir extrapolación.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-28",
+  "tema": "Datos faltantes",
+  "enunciado": "Imputa la edad faltante de 263 pasajeros con la mediana. ¿Qué efecto secundario tiene eso sobre la distribución de la variable?",
+  "opciones": [
+   "La distribución no cambia",
+   "Aparece un pico artificial en el valor de la mediana",
+   "La variable queda normalizada",
+   "Se pierde la correlación con las demás variables"
+  ],
+  "correcta": 1,
+  "explicacion": "Todos los faltantes reciben el mismo número, así que se acumula un pico en ese valor y la varianza de la columna baja artificialmente.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-29",
+  "tema": "Datos faltantes",
+  "enunciado": "Al preparar los datos, ¿con qué conjunto se debe AJUSTAR el imputador?",
+  "opciones": [
+   "Con todos los datos, antes de partir",
+   "Solo con el conjunto de entrenamiento",
+   "Solo con el conjunto de prueba",
+   "Con cada muestra por separado"
+  ],
+  "correcta": 1,
+  "explicacion": "Igual que el escalador: ajustar con todos los datos mete información de la prueba en el entrenamiento. Se ajusta con entrenamiento y se aplica (transform) a los demás.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-30",
+  "tema": "Datos",
+  "enunciado": "En el conjunto del Titanic hay una columna «bote salvavidas». ¿Por qué no se puede usar como característica para predecir la supervivencia?",
+  "opciones": [
+   "Porque tiene muchos valores faltantes",
+   "Porque es texto y no número",
+   "Porque solo se conoce después de saber si la persona sobrevivió: es fuga de datos",
+   "Porque está correlacionada con la clase del pasaje"
+  ],
+  "correcta": 2,
+  "explicacion": "Saber en qué bote iba alguien implica que sobrevivió. El modelo acertaría casi todo en las pruebas y fallaría por completo en un caso real, donde ese dato no existe al momento de predecir.",
+  "fuente": "Curso 2026-3"
+ }
+]

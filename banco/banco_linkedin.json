@@ -1,0 +1,464 @@
+[
+ {
+  "id": "LI-1",
+  "tema": "Fundamentos",
+  "enunciado": "Trabaja en un servicio de música y quiere clasificar canciones por género con aprendizaje supervisado. Ya tiene miles de canciones de cada género como datos de entrenamiento. Ahora aparta un subconjunto pequeño y aleatorio de todas las canciones del servicio. ¿Cómo se llama ese subconjunto?",
+  "opciones": [
+   "Un grupo de datos",
+   "El conjunto supervisado",
+   "Datos masivos (big data)",
+   "Conjunto de prueba"
+  ],
+  "correcta": 3,
+  "explicacion": "Es el conjunto de prueba: se aparta antes de entrenar y se usa una sola vez al final para estimar cómo se comportará el modelo con datos nuevos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-2",
+  "tema": "Fundamentos",
+  "enunciado": "En la programación tradicional uno ingresa instrucciones. ¿Qué se ingresa en aprendizaje de máquina?",
+  "opciones": [
+   "Patrones",
+   "Programas",
+   "Reglas",
+   "Datos"
+  ],
+  "correcta": 3,
+  "explicacion": "En programación tradicional el programador escribe las reglas; en aprendizaje de máquina se entregan datos y el algoritmo deduce las reglas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-3",
+  "tema": "Fundamentos",
+  "enunciado": "Su empresa creó un modelo para predecir qué clientes comprarían un seguro, y el modelo resultó con varianza baja y sesgo alto. ¿Qué dice eso del modelo?",
+  "opciones": [
+   "Se equivocaba de forma consistente",
+   "Se equivocaba de forma inconsistente",
+   "Acertaba de forma consistente",
+   "Acertaba y fallaba por igual"
+  ],
+  "correcta": 0,
+  "explicacion": "Sesgo alto significa que las predicciones están lejos del valor correcto; varianza baja significa que son estables entre sí. Juntos: se equivoca siempre, y siempre de la misma manera.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-4",
+  "tema": "Clasificación",
+  "enunciado": "¿Por qué el método Naive Bayes se llama «ingenuo» (naive)?",
+  "opciones": [
+   "Porque supone ingenuamente que no habrá datos",
+   "Porque ni siquiera intenta hacer predicciones precisas",
+   "Porque supone ingenuamente que las características son independientes entre sí",
+   "Porque supone ingenuamente que todas las características dependen unas de otras"
+  ],
+  "correcta": 2,
+  "explicacion": "Supone que, conocida la clase, cada característica es independiente de las demás. Casi nunca se cumple (de ahí lo «ingenuo»), pero el método funciona bien igual.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-5",
+  "tema": "Validación",
+  "enunciado": "¿Cuál es una razón para NO usar los mismos datos como entrenamiento y como prueba?",
+  "opciones": [
+   "Es casi seguro que el modelo quedará subajustado",
+   "Escogerá el algoritmo equivocado",
+   "Puede que no tenga datos suficientes para los dos",
+   "Es casi seguro que el modelo quedará sobreajustado"
+  ],
+  "correcta": 3,
+  "explicacion": "Evaluar con los mismos datos del entrenamiento premia memorizar: el resultado se ve excelente y no dice nada sobre cómo se comportará con datos nuevos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-6",
+  "tema": "Ensambles",
+  "enunciado": "El bosque aleatorio (random forest) es una versión mejorada de cuál técnica anterior?",
+  "opciones": [
+   "Árboles agregados",
+   "Árboles con boosting",
+   "Árboles con bagging (embolsado)",
+   "Árboles apilados"
+  ],
+  "correcta": 2,
+  "explicacion": "Random forest parte del bagging de árboles y le agrega una idea: en cada división solo considera un subconjunto aleatorio de características, lo que hace a los árboles menos parecidos entre sí.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-7",
+  "tema": "No supervisado",
+  "enunciado": "¿Cuál afirmación sobre K-medias es verdadera?",
+  "opciones": [
+   "Los centroides iniciales a veces se escogen al azar",
+   "K-medias se usa a menudo en aprendizaje supervisado",
+   "El número de grupos siempre se escoge al azar",
+   "Para que sea preciso, conviene que los centroides queden fuera del grupo"
+  ],
+  "correcta": 0,
+  "explicacion": "La inicialización de los centroides suele ser aleatoria (o con k-means++). Por eso el resultado cambia entre corridas y conviene repetir con varias semillas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-8",
+  "tema": "Clasificación",
+  "enunciado": "Su equipo debe construir un clasificador binario y el criterio número uno es que la predicción sea lo más rápida posible al usarlo, incluso en un dispositivo pequeño. ¿Cuál escoge?",
+  "opciones": [
+   "Bosque aleatorio",
+   "Regresión logística",
+   "KNN",
+   "Red neuronal profunda"
+  ],
+  "correcta": 1,
+  "explicacion": "Una vez entrenada, la regresión logística solo hace una suma ponderada y una sigmoide. KNN debe comparar contra todo el conjunto guardado, y las otras dos son mucho más pesadas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-9",
+  "tema": "Fundamentos",
+  "enunciado": "Su sistema intenta describir una estructura oculta a partir de datos SIN etiquetar. ¿Cómo se llama ese tipo de aprendizaje?",
+  "opciones": [
+   "Supervisado",
+   "No supervisado",
+   "Por refuerzo",
+   "Semi-no-supervisado"
+  ],
+  "correcta": 1,
+  "explicacion": "Sin etiquetas y buscando estructura: aprendizaje no supervisado (agrupamiento, reducción de dimensionalidad).",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-10",
+  "tema": "Clasificación",
+  "enunciado": "Está usando K vecinos más cercanos con K = 1. ¿Qué espera ver al entrenar el modelo?",
+  "opciones": [
+   "Varianza alta y sesgo bajo",
+   "Sesgo bajo y varianza baja",
+   "Varianza baja y sesgo alto",
+   "Sesgo alto y varianza alta"
+  ],
+  "correcta": 0,
+  "explicacion": "Con K = 1 cada punto se clasifica por su vecino más cercano: el modelo sigue el ruido de los datos (varianza alta) pero no impone ninguna forma previa (sesgo bajo).",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-11",
+  "tema": "Clasificación",
+  "enunciado": "¿Cuál de estas opciones es la mejor para clasificación binaria?",
+  "opciones": [
+   "K-medias",
+   "Regresión logística",
+   "Regresión lineal",
+   "Análisis de componentes principales (PCA)"
+  ],
+  "correcta": 1,
+  "explicacion": "La regresión logística está diseñada para clasificación binaria: devuelve la probabilidad de pertenecer a la clase 1. K-medias y PCA no son supervisados y la regresión lineal predice números continuos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-12",
+  "tema": "Clasificación",
+  "enunciado": "En K vecinos más cercanos, entre más cerca esté de un vecino, más probable es que...",
+  "opciones": [
+   "comparta características con él",
+   "haga parte del nodo raíz",
+   "tenga una conexión euclidiana",
+   "haga parte del mismo grupo"
+  ],
+  "correcta": 0,
+  "explicacion": "KNN asume que la cercanía en el espacio de características implica parecido, y por eso la etiqueta de los vecinos sirve para predecir la propia.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-13",
+  "tema": "Clasificación",
+  "enunciado": "Naive Bayes mira cada característica ______ y calcula la probabilidad de pertenecer a cada clase.",
+  "opciones": [
+   "condicional",
+   "multiclase",
+   "independiente",
+   "binaria"
+  ],
+  "correcta": 2,
+  "explicacion": "Trata cada característica como independiente de las demás dada la clase, y por eso puede multiplicar las probabilidades individuales.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-14",
+  "tema": "Ensambles",
+  "enunciado": "Alguien de su equipo propone usar árboles de decisión, Naive Bayes y K vecinos más cercanos, los tres a la vez sobre los mismos datos, y combinar los resultados. ¿Cómo se llama eso?",
+  "opciones": [
+   "Análisis de regresión",
+   "Aprendizaje no supervisado",
+   "Modelado de varianza alta",
+   "Modelado por ensamble"
+  ],
+  "correcta": 3,
+  "explicacion": "Combinar varios modelos distintos para obtener una predicción conjunta es un ensamble. La idea es que los errores de unos se compensen con los aciertos de otros.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-15",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de los siguientes NO es aprendizaje supervisado?",
+  "opciones": [
+   "Árbol de decisión",
+   "Regresión lineal",
+   "PCA",
+   "Naive Bayes"
+  ],
+  "correcta": 2,
+  "explicacion": "PCA no usa etiquetas: solo busca las direcciones de máxima varianza en las características.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-16",
+  "tema": "Optimización",
+  "enunciado": "¿Cuál función de error es la más adecuada para el descenso de gradiente en regresión logística?",
+  "opciones": [
+   "La función de entropía",
+   "El error cuadrático",
+   "La entropía cruzada",
+   "El número de errores"
+  ],
+  "correcta": 2,
+  "explicacion": "Con error cuadrático la función de costo de la regresión logística deja de ser convexa. La entropía cruzada sí lo es y además penaliza fuertemente las predicciones seguras y equivocadas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-17",
+  "tema": "Fundamentos",
+  "enunciado": "______ se refiere a un modelo que no logra ajustar ni siquiera los datos de entrenamiento, y tampoco generaliza.",
+  "opciones": [
+   "Buen ajuste",
+   "Sobreajuste",
+   "Subajuste",
+   "Todas las anteriores"
+  ],
+  "correcta": 2,
+  "explicacion": "Subajuste (underfitting): el modelo es demasiado simple para el problema y falla en entrenamiento y en prueba por igual.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-18",
+  "tema": "Fundamentos",
+  "enunciado": "¿Qué significa que su modelo esté subajustado (underfit)?",
+  "opciones": [
+   "Que hay muy pocos datos de entrenamiento",
+   "Que hay demasiados datos de entrenamiento",
+   "Que hay poca varianza pero sesgo alto",
+   "Que el modelo tiene sesgo bajo pero varianza alta"
+  ],
+  "correcta": 2,
+  "explicacion": "El subajuste es el extremo de sesgo alto: el modelo es tan rígido que se equivoca de forma sistemática, aunque de manera estable.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-19",
+  "tema": "Redes neuronales",
+  "enunciado": "Las activaciones de las clases A, B y C antes de la softmax fueron 10, 8 y 3. ¿Cuál es aproximadamente la diferencia entre los valores de softmax de A y de B?",
+  "opciones": [
+   "76 %",
+   "88 %",
+   "12 %",
+   "0,0008 %"
+  ],
+  "correcta": 0,
+  "explicacion": "softmax(A) ≈ 0,876 y softmax(B) ≈ 0,119, así que la diferencia es de unos 0,757, es decir 76 %. Note cómo la exponencial amplifica una diferencia de 2 en la entrada.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-20",
+  "tema": "Datos faltantes",
+  "enunciado": "El conjunto que acaba de recolectar tiene muchos valores faltantes. ¿Qué acción ayuda a minimizar el problema?",
+  "opciones": [
+   "Rellenar con valores aleatorios controlados",
+   "Reemplazar con el promedio de todas las muestras",
+   "Eliminar las muestras defectuosas",
+   "Imputación"
+  ],
+  "correcta": 3,
+  "explicacion": "«Imputación» es el nombre general de la estrategia: rellenar con un valor razonable (media, mediana, moda, un modelo). Las otras opciones son casos particulares o pierden datos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-21",
+  "tema": "PCA",
+  "enunciado": "¿Cuál de los siguientes métodos se puede usar tanto como aprendizaje no supervisado como para reducir dimensionalidad?",
+  "opciones": [
+   "SVM",
+   "PCA",
+   "LDA",
+   "t-SNE"
+  ],
+  "correcta": 1,
+  "explicacion": "PCA no usa etiquetas y produce un espacio de menor dimensión. LDA sí necesita etiquetas y t-SNE sirve para visualizar, no para transformar datos nuevos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-22",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Cuál es la motivación principal para usar funciones de activación en una red neuronal?",
+  "opciones": [
+   "Capturar patrones complejos no lineales",
+   "Convertir valores continuos en «encendido» (1) o «apagado» (0)",
+   "Ayudar a evitar el problema del gradiente que se desvanece",
+   "Poder activar cada neurona de forma individual"
+  ],
+  "correcta": 0,
+  "explicacion": "Sin activación no lineal, apilar capas equivale a una sola transformación lineal: la red no podría resolver la XOR ni ningún problema no lineal.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-23",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Cuál función de pérdida encaja mejor en un problema supervisado categórico (discreto)?",
+  "opciones": [
+   "Divergencia de Kullback-Leibler",
+   "Entropía cruzada binaria",
+   "Error cuadrático medio (MSE)",
+   "Cualquier pérdida L2"
+  ],
+  "correcta": 1,
+  "explicacion": "Para clases se usa entropía cruzada (binaria con dos clases, categórica con más). El MSE y las pérdidas L2 son para regresión.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-24",
+  "tema": "Fundamentos",
+  "enunciado": "Los datos de su modelo tienen sesgo bajo y varianza baja. ¿Cómo espera ver los puntos en el diagrama?",
+  "opciones": [
+   "Agrupados y sobre el valor esperado",
+   "Agrupados pero lejos del valor esperado",
+   "Dispersos alrededor del valor esperado",
+   "Dispersos y lejos del valor esperado"
+  ],
+  "correcta": 0,
+  "explicacion": "Sesgo bajo significa centrados en el objetivo y varianza baja significa poco dispersos: el mejor de los casos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-25",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál es una de las formas más efectivas de corregir el subajuste de un modelo?",
+  "opciones": [
+   "Crear grupos de entrenamiento",
+   "Quitar características",
+   "Usar aprendizaje por refuerzo",
+   "Agregar más características"
+  ],
+  "correcta": 3,
+  "explicacion": "El subajuste viene de un modelo demasiado simple: se corrige dándole más información (más características) o más capacidad, no quitándosela.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-26",
+  "tema": "Fundamentos",
+  "enunciado": "En aprendizaje supervisado hay que equilibrar el subajuste y el sobreajuste. ¿Cómo se llama ese equilibrio?",
+  "opciones": [
+   "El reto de lo escaso y lo excesivo",
+   "El equilibrio entre agrupamiento y clasificación",
+   "El compromiso entre sesgo y varianza",
+   "El reto del conjunto multiclase"
+  ],
+  "correcta": 2,
+  "explicacion": "Es el compromiso sesgo-varianza: bajar uno normalmente sube el otro, y el buen modelo está en el punto medio.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-27",
+  "tema": "No supervisado",
+  "enunciado": "K-medias es un algoritmo de qué tipo de aprendizaje?",
+  "opciones": [
+   "Por refuerzo",
+   "Supervisado",
+   "No supervisado",
+   "De clasificación"
+  ],
+  "correcta": 2,
+  "explicacion": "Agrupa sin usar etiquetas: es no supervisado. Ojo: agrupar no es clasificar, porque los grupos no tienen un nombre dado de antemano.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-28",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál es la mejor definición de sesgo (bias) en un modelo?",
+  "opciones": [
+   "Es cuando los valores predichos quedan dispersos",
+   "Es la distancia entre el valor predicho y el valor real",
+   "Es cuando los datos están mal por distintas razones",
+   "Es cuando los valores se desvían siempre el mismo porcentaje"
+  ],
+  "correcta": 1,
+  "explicacion": "El sesgo mide qué tan lejos queda sistemáticamente la predicción del valor real. La dispersión alrededor de esa predicción es la varianza.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-29",
+  "tema": "Clasificación",
+  "enunciado": "¿Cuándo se usa más comúnmente un árbol de decisión?",
+  "opciones": [
+   "Con productos de datos masivos",
+   "En problemas supervisados de clasificación binaria",
+   "Para encontrar el mejor grupo de datos",
+   "Para determinar la «Q» en aprendizaje por refuerzo"
+  ],
+  "correcta": 1,
+  "explicacion": "Los árboles son supervisados y se usan sobre todo en clasificación, con la ventaja de que el resultado se puede leer y explicar.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-30",
+  "tema": "No supervisado",
+  "enunciado": "¿Cuál de los siguientes algoritmos es no supervisado?",
+  "opciones": [
+   "Bosque aleatorio",
+   "K vecinos más cercanos",
+   "Máquinas de vectores de soporte",
+   "K-medias"
+  ],
+  "correcta": 3,
+  "explicacion": "Los otros tres necesitan etiquetas. Cuidado con confundir K-medias (no supervisado) con K vecinos más cercanos (supervisado) solo porque ambos llevan «K».",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-31",
+  "tema": "Ensambles",
+  "enunciado": "Promediar la salida de varios árboles de decisión sirve para...",
+  "opciones": [
+   "Aumentar la varianza",
+   "Aumentar el sesgo",
+   "Disminuir la varianza",
+   "Disminuir el sesgo"
+  ],
+  "correcta": 2,
+  "explicacion": "Un árbol solo tiene varianza alta: cambia mucho con pequeños cambios en los datos. Al promediar muchos árboles los errores se compensan y la varianza baja. Es la idea del bagging y del bosque aleatorio.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-32",
+  "tema": "Datos faltantes",
+  "enunciado": "Complete: dos técnicas de imputación multivariada son el imputador ______ y el imputador ______.",
+  "opciones": [
+   "supervisado, no supervisado",
+   "iterativo, por KNN",
+   "por similitud, regresivo",
+   "normalizado, escalado"
+  ],
+  "correcta": 1,
+  "explicacion": "En scikit-learn son IterativeImputer (modela cada columna a partir de las demás) y KNNImputer (usa el promedio de las muestras más parecidas). Multivariada significa que usa las otras columnas, no solo la que falta.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-33",
+  "tema": "Datos faltantes",
+  "enunciado": "¿Cómo se manejan los datos faltantes o corruptos en un conjunto?",
+  "opciones": [
+   "Eliminando las filas o columnas afectadas",
+   "Reemplazando por la media, la mediana o la moda",
+   "Asignando una categoría propia para «faltante»",
+   "Todas las anteriores"
+  ],
+  "correcta": 3,
+  "explicacion": "Las tres son estrategias válidas y la elección depende de cuántos faltan y de por qué faltan. Lo que no se vale es ignorarlo o decidirlo sin justificarlo.",
+  "fuente": "Banco LinkedIn (traducido)"
+ }
+]

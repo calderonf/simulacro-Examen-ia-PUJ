@@ -1,0 +1,8 @@
+# Fuentes sin procesar: traen preguntas que no entraron al banco. No se publican.
+banco/*_raw.json
+
+# Ruido del sistema y de Python
+.DS_Store
+__pycache__/
+*.pyc
+*.bak

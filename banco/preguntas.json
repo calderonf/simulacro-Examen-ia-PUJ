@@ -1,0 +1,1417 @@
+[
+ {
+  "id": "2023-1-1",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes No es una métrica para evaluar el desempeño de un modelo de aprendizaje supervisado?",
+  "opciones": [
+   "R2",
+   "Matriz de confusión",
+   "AUC-ROC",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 3,
+  "explicacion": "El coeficiente de silueta mide qué tan bien separados quedan los grupos en aprendizaje NO supervisado. R², la matriz de confusión y el AUC-ROC sí evalúan modelos supervisados.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-2",
+  "tema": "Validación",
+  "enunciado": "¿Cuál de los siguientes métodos es el menos recomendable para validar un modelo de clasificación binario?",
+  "opciones": [
+   "cros validación usando MCC, como métrica para evaluar",
+   "“Hold-out” usando 75/25, y precisión para evaluar.",
+   "cros validación usando precisión, como métrica para evaluar",
+   "“Hold-out” usando 80/20, y F1 para evaluar."
+  ],
+  "correcta": 1,
+  "explicacion": "Es el menos confiable por dos razones a la vez: una sola partición (Holdout) da un número que depende del azar de esa partición, y la exactitud engaña cuando las clases están desbalanceadas. La validación cruzada con MCC o F1 es más robusta.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-3",
+  "tema": "No supervisado",
+  "enunciado": "¿Cuál de los siguientes métodos sería el más recomendable para definir el número de grupos ideal en un problema de aprendizaje no supervisado?",
+  "opciones": [
+   "Usar la cantidad de grupos con el mayor coeficiente de silueta y buscar que coincida con el criterio del codo de inercia.",
+   "Usar la cantidad de grupos con el menor coeficiente de silueta y buscar que coincida con el criterio del codo de inercia.",
+   "Usar la cantidad de grupos con el mayor coeficiente de silueta y buscar que coincida con el menor valor del codo de inercia.",
+   "Usar la cantidad de grupos con el menor coeficiente de silueta y buscar que coincida con el mayor valor del codo de inercia."
+  ],
+  "correcta": 0,
+  "explicacion": "Se busca el K con el MAYOR coeficiente de silueta (más alto es mejor) y se contrasta con el codo de la inercia. Los dos criterios deben apuntar al mismo K.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-4",
+  "tema": "Datos faltantes",
+  "enunciado": "¿Cuenta con un conjunto de datos con una alta correlación entre sus características, sin embargo ha detectado que cuenta con algunos datos faltantes, ¿cómo llenaría estos valores?",
+  "opciones": [
+   "Con valores aleatorios, al ser datos correlacionados los valores aleatorios siempre son no correlacionados lo que añade información al problema",
+   "El dato faltante en cada muestra se llena con el promedio de la característica",
+   "El dato faltante en cada muestra se llena con el promedio de la muestra",
+   "Se plantea una regresión usando las demás características para rellenar el dato faltante."
+  ],
+  "correcta": 3,
+  "explicacion": "Si las características están muy correlacionadas, las demás columnas contienen información sobre la que falta: una regresión la aprovecha. Rellenar con el promedio de la característica ignora esa correlación, y promediar la MUESTRA mezcla variables de unidades distintas.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-5",
+  "tema": "Validación",
+  "enunciado": "¿Cuál No es un propósito de realizar una validación cruzada o cros validación?",
+  "opciones": [
+   "Evaluar el desempeño predictivo de un modelo entrenado a partir de todo el conjunto de datos",
+   "Prevenir el sobreajuste del modelo a los datos",
+   "Regularizar el modelo previniendo que la tasa de aprendizaje llegue a un punto donde afecte el sesgo del modelo y por ende su varianza.",
+   "Se le entrega al cliente un modelo entrenado en un conjunto mayor de datos comparado a otros métodos."
+  ],
+  "correcta": 2,
+  "explicacion": "La validación cruzada es un método de EVALUACIÓN, no de regularización: no toca la tasa de aprendizaje ni penaliza los coeficientes del modelo.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-6",
+  "tema": "Regularización",
+  "enunciado": "¿Cuál de las siguientes afirmaciones sobre la regularización es correcta? (NOTA: definiendo lambda “λ” como en clase; el término que acompaña a la suma de coeficientes de regularización)",
+  "opciones": [
+   "El uso de un valor de lambda demasiado pequeño puede hacer que su hipótesis no se ajuste a los datos. (underfit)",
+   "El uso de un valor de lambda demasiado grande puede hacer que su hipótesis sobreajuste los datos. (overfit)",
+   "El uso de un valor de lambda muy grande puede dañar el desempeño de su métrica",
+   "El uso de un valor de lambda demasiado pequeño o cero puede hacer que su hipótesis sobreajuste los datos."
+  ],
+  "correcta": 3,
+  "explicacion": "λ pequeño o cero deja el modelo sin penalización, así que puede sobreajustar. Es al revés con λ grande: el modelo queda demasiado restringido y subajusta.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-7",
+  "tema": "No supervisado",
+  "enunciado": "Supongamos que aplica el algoritmo K-means con un número de clusters (K) igual a tres en un conjunto de datos bidimensional. Después de la ejecución del algoritmo, obtienes los siguientes centroides en orden: (2, 4), (6, 8) y (10, 12). ¿A qué cluster pertenecería el punto de datos (5, 7), suponiendo una métrica euclideana?",
+  "opciones": [
+   "Cluster 1",
+   "Cluster 2",
+   "Cluster 3",
+   "No hay datos suficientes. No es posible a partir de los centroides encontrar los grupos resultantes."
+  ],
+  "correcta": 1,
+  "explicacion": "K-medias asigna cada punto al centroide más cercano. Se calcula la distancia del punto a (2,4), (6,8) y (10,12) y gana el segundo.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-8",
+  "tema": "No supervisado",
+  "enunciado": "¿En cuál de los siguientes casos la agrupación de K-medias se vería menos afectada? 1. Puntos de datos con unos pocos valores atípicos (outliers) 2. Puntos de datos con diferentes densidades (clusteres muy pequeños para una clase y comparativamente clusteres muy grandes para otras clases) 3. Puntos de datos con formas no convexas (es decir, unas contenidas entre otras) 4. Puntos de datos con dimensiones altas (alta dimensionalidad) 5. Puntos de datos con distribución no lineal en los clusters",
+  "opciones": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "correcta": 3,
+  "explicacion": "K-medias se ve menos afectada por la ALTA DIMENSIONALIDAD que por las otras situaciones. Los atípicos corren los centroides, las densidades distintas y las formas no convexas rompen el supuesto de grupos esféricos.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-9",
+  "tema": "PCA",
+  "enunciado": "¿Cuál de las siguientes es una forma razonable de seleccionar el número de componentes principales \"k\"?",
+  "opciones": [
+   "Usar el método de la cros validación y tomar el mejor resultado como k",
+   "Elija que k sea el 99% de m (k = 0.99 * m; redondeado al número entero más cercano) donde m es la varianza del componente principal",
+   "Elija k para que sea el valor más pequeño de modo que se retenga al menos el 99% de la varianza explicada",
+   "Elija k para que sea el valor más grande posible de modo que se mantenga más del 99% de la varianza"
+  ],
+  "correcta": 2,
+  "explicacion": "Se escoge el k MÁS PEQUEÑO que conserve al menos el 99 % de la varianza explicada: es el mínimo número de componentes que mantiene la información deseada.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-10",
+  "tema": "Optimización",
+  "enunciado": "Suponga que usted usa el método del descenso del gradiente para resolver un problema durante 1500000 iteraciones con tasa de aprendizaje “learning-rate” α = 0.003 y calcula su costo J(θ) después de cada iteración. Encuentra que el valor de J(θ) disminuye casi de manera lineal. En base a esto; ¿cuál de las siguientes conclusiones parece más plausible?",
+  "opciones": [
+   "Es probable que hubiera llegado a una solución, Pare de entrenar.",
+   "Es probable que hubiera llegado a una solución, pero puede mejorarla reduciendo más α. Y busque que la gráfica del costo no sea una línea sino una curva que converja a 0.",
+   "Es probable que No hubiera llegado a una solución, Pare de entrenar.",
+   "Es probable que No hubiera llegado a una solución, aumente el valor de alfa y busque que la gráfica del costo no sea una línea sino una curva que converja a 0."
+  ],
+  "correcta": 3,
+  "explicacion": "Si tras 1,5 millones de iteraciones el costo todavía baja de forma casi lineal, el descenso va demasiado lento: α es muy pequeño. Hay que aumentarlo y buscar que la curva se doble y se aplane.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-11",
+  "tema": "Clasificación",
+  "enunciado": "Suponga que ha entrenado un clasificador de regresión logística y con este predice un nuevo ejemplo x con una hipótesis ho(x) = 0.2. Esto significa:",
+  "opciones": [
+   "que 1 es la probabilidad asociada de que esa \"x\" sea igual a 0.2 dado un θ parametrizado por \"y\"",
+   "que 0.2 es la probabilidad asociada de que esa \"y\" sea igual a 1 dado un x parametrizado por θ",
+   "que 0.2 es la probabilidad asociada de que esa \"y\" sea igual a 0 dado un x parametrizado por θ",
+   "que 0.2 es la probabilidad asociada de que esa \"x\" sea igual a 1 dado un y parametrizado por θ"
+  ],
+  "correcta": 1,
+  "explicacion": "En regresión logística la hipótesis devuelve P(y = 1 | x; θ). Si vale 0,2, hay 20 % de probabilidad de que la clase sea 1 (y por tanto 80 % de que sea 0).",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-12",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de las siguientes afirmaciones es falsa para un método no-supervisado?",
+  "opciones": [
+   "Requiere datos etiquetados para entrenar un modelo.",
+   "Agrupa los puntos de datos basándose en la similitud de sus características.",
+   "No utiliza información de salida conocida para realizar predicciones.",
+   "Explora patrones y estructuras en los datos sin una guía externa."
+  ],
+  "correcta": 0,
+  "explicacion": "Lo que define a un método no supervisado es justamente que NO necesita etiquetas. Las otras tres afirmaciones sí lo describen.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-13",
+  "tema": "Optimización",
+  "enunciado": "Para optimizar su función objetivo; está realizando un descenso de gradiente utilizando todo el conjunto de entrenamiento (NO un descenso de gradiente estocástico por lotes o batches) . ¿Es necesario mezclar (shuffle) su conjunto de entrenamiento?",
+  "opciones": [
+   "Si. Si no lo hace; la optimización oscilará alrededor del mínimo al final del entrenamiento.",
+   "Sí; para ayudar a que el modelo se generalice al conjunto de datos de entrenamiento y que cada lote contribuya de manera aleatoria al resultado final de la época.",
+   "No; no es necesario porque el conjunto de datos ya puede considerarse barajado del proceso de recopilación de datos.",
+   "No; porque cada paso del algoritmo del descenso del gradiente pasa por todo el conjunto de datos de todos modos y el orden no importa."
+  ],
+  "correcta": 3,
+  "explicacion": "Con descenso de gradiente por lotes completos, cada paso recorre todo el conjunto antes de actualizar, así que el orden de las filas no cambia el resultado.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-14",
+  "tema": "Optimización",
+  "enunciado": "Para optimizar su función objetivo; está realizando un descenso de gradiente estocástico utilizando lotes el conjunto de entrenamiento (NO un descenso de gradiente que usa todo el conjunto de datos) . ¿Es necesario mezclar (shuffle) su conjunto de entrenamiento?",
+  "opciones": [
+   "Si. Si no lo hace; la optimización nunca llegará a un mínimo global",
+   "Sí; para ayudar a que el modelo se generalice al conjunto de datos de entrenamiento y que cada lote contribuya de manera aleatoria al resultado final de la época.",
+   "No; no es necesario porque el conjunto de datos ya puede considerarse barajado del proceso de recopilación de datos sin importar cómo se seleccionen los lotes.",
+   "No; porque cada paso del algoritmo del descenso del gradiente pasa por todo el conjunto de datos de todos modos y el orden no importa."
+  ],
+  "correcta": 1,
+  "explicacion": "Con descenso estocástico por lotes el orden SÍ importa: si no se mezcla, cada lote puede quedar sesgado (por ejemplo todo de una misma clase) y las actualizaciones dejan de ser representativas.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-15",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de las siguientes afirmaciones describe correctamente el sobreajuste (overfitting) y el subajuste (underfitting)?",
+  "opciones": [
+   "El sobreajuste ocurre cuando el modelo se ajusta demasiado a los datos de entrenamiento y no puede generalizar bien a nuevos datos. El subajuste, por otro lado, ocurre cuando el modelo es demasiado simple y no captura bien la complejidad de los datos. Para combatir el sobreajuste, se pueden utilizar técnicas como la regularización, la validación cruzada y el aumento de datos. Para combatir el subajuste, se puede aumentar la complejidad del modelo, agregar más características o recopilar más datos de entrenamiento.",
+   "El sobreajuste ocurre cuando el modelo no se ajusta lo suficiente a los datos de entrenamiento y no puede capturar las relaciones complejas presentes. El subajuste, por otro lado, ocurre cuando el modelo se ajusta demasiado a los datos de entrenamiento y no puede generalizar a nuevos datos. Para combatir el sobreajuste, se pueden utilizar técnicas como el aumento de datos, el uso de modelos más complejos o la recopilación de más datos. Para combatir el subajuste, se puede utilizar la regularización, reducir la complejidad del modelo o realizar una validación cruzada más rigurosa.",
+   "El sobreajuste ocurre cuando el modelo es demasiado simple y no puede capturar la complejidad de los datos. El subajuste, por otro lado, ocurre cuando el modelo se ajusta demasiado a los datos de entrenamiento y no puede generalizar bien. Para combatir el sobreajuste, se pueden utilizar técnicas como el aumento de datos, el uso de modelos más complejos o la recopilación de más datos. Para combatir el subajuste, se puede utilizar la regularización, reducir la complejidad del modelo o realizar una validación cruzada más rigurosa.",
+   "El sobreajuste ocurre cuando el modelo se ajusta bien a los datos de entrenamiento pero no puede generalizar a nuevos datos. El subajuste, por otro lado, ocurre cuando el modelo es demasiado complejo y se ajusta demasiado a los datos de entrenamiento. Para combatir el sobreajuste, se pueden utilizar técnicas como la validación cruzada, la reducción de la complejidad del modelo o el uso de conjuntos de datos más grandes. Para combatir el subajuste, se puede aumentar la complejidad del modelo, agregar más características o recopilar más datos de entrenamiento."
+  ],
+  "correcta": 0,
+  "explicacion": "Sobreajuste: el modelo memoriza el entrenamiento y falla con datos nuevos. Subajuste: el modelo es demasiado simple y falla incluso en el entrenamiento.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-16",
+  "tema": "PCA",
+  "enunciado": "La maldición de la dimensionalidad (curse of dimensionality, en inglés) se refiere a los desafíos y problemas que surgen al tratar con conjuntos de datos de alta dimensionalidad. A medida que aumenta el número de características o dimensiones en un conjunto de datos, surgen varios problemas, como el aumento en la complejidad computacional, la escasez de datos en el espacio de alta dimensión y la dificultad para encontrar relaciones y patrones significativos. ¿Cómo se combate la maldición de la dimensionalidad (curse of dimensionality)?",
+  "opciones": [
+   "Seleccionando todas las características disponibles para aprovechar al máximo la información.",
+   "Extrayendo características adicionales para aumentar la dimensionalidad y capturar más información.",
+   "Reduciendo la dimensionalidad mediante técnicas como PCA.",
+   "Aplicando la regularización para aumentar la complejidad del modelo y ajustarse mejor a los datos."
+  ],
+  "correcta": 2,
+  "explicacion": "La maldición de la dimensionalidad se combate REDUCIENDO dimensiones, por ejemplo con PCA. Agregar características empeora el problema.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-17",
+  "tema": "Clasificación",
+  "enunciado": "Cual de las siguientes NO es una desventaja de la estrategia de clasificación multiclase One vs One.",
+  "opciones": [
+   "La escala de los valores de confianza puede diferir entre diferentes clasificadores binarios; por lo que el resultado puede no ser comparable entre diferentes clasificadores",
+   "El número de clasificadores que toca implementar es mayor que en otras estrategias como OvA; pero estos sin más simples si el número de clases es grande",
+   "Se puede llegar a soluciones ambiguas",
+   "La distribución de las clases de cada clasificador binario en OvO está siempre desequilibrada en conjuntos que inicialmente estaban bien equilibrados"
+  ],
+  "correcta": 3,
+  "explicacion": "Esa NO es una desventaja porque es falsa: en OvO cada clasificador binario se entrena solo con las muestras de dos clases, así que si el conjunto estaba balanceado los subproblemas también lo están. OvA sí sufre desbalance.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-18",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de los siguientes problemas no puede ser resuelto con una técnica de aprendizaje supervisado?",
+  "opciones": [
+   "Clasificación de imágenes en categorías predefinidas.",
+   "Predicción del precio de una vivienda en función de sus características.",
+   "Agrupación de documentos de texto según su contenido.",
+   "Detección de spam en correos electrónicos."
+  ],
+  "correcta": 2,
+  "explicacion": "Agrupar documentos por contenido, sin etiquetas previas, es aprendizaje NO supervisado. Los otros tres tienen una etiqueta conocida que el modelo aprende a predecir.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-19",
+  "tema": "PCA",
+  "enunciado": "En cuál de los siguientes casos no es útil el PCA?",
+  "opciones": [
+   "Reducción de la dimensionalidad en conjuntos de datos con alta correlación entre características.",
+   "Visualización de datos de alta dimensión en un espacio de menor dimensión.",
+   "Evaluar la pertinencia de características individuales en un conjunto de datos",
+   "Reducción de la dimensionalidad en conjuntos de datos con baja correlación entre características."
+  ],
+  "correcta": 3,
+  "explicacion": "PCA aprovecha la correlación entre características para resumirlas. Si hay poca correlación, cada componente aporta poco y no se gana casi nada al reducir.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-20",
+  "tema": "Regresión",
+  "enunciado": "En una regresión; se le conoce al valor Residual como el valor real menos el valor predicho (estrictamente en ese orden). Al graficar el histograma del valor residual; observamos que la distribución se mueve a la izquierda del cero y tiene un valor medio negativo. ¿Qué puede significar esto?",
+  "opciones": [
+   "Esto significa que el modelo está sobrestimando lo que quiere decir que tiene un \"bias\" sesgo positivo",
+   "Esto significa que el modelo está atascado en los mínimos locales. Toca reentrenar.",
+   "\"Esto significa que el modelo está subestimando lo que quiere decir que tiene un \"bias\" o sesgo negativo\"",
+   "Esto significa que el modelo está atascado en máximos globales"
+  ],
+  "correcta": 0,
+  "explicacion": "Residual = real − predicho. Si los residuales son en promedio negativos, el predicho es mayor que el real: el modelo SOBRESTIMA.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2022-3-1",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes NO es una métrica para evaluar el desempeño de una regresión?",
+  "opciones": [
+   "R^2",
+   "Raíz cuadrada del error cuadrático medio (RMSE)",
+   "Error cuadrático medio (MSE)",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 3,
+  "explicacion": "El coeficiente de silueta es una métrica de agrupamiento (no supervisado). R², RMSE y MSE sí evalúan regresiones.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-2",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes es una herramienta para evaluar el desempeño de un clasificador?",
+  "opciones": [
+   "R^2",
+   "Matriz de confusión",
+   "Matriz de costos y beneficios",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 1,
+  "explicacion": "La matriz de confusión resume aciertos y errores por clase y de ella salen exactitud, precisión, sensibilidad, F1 y MCC.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-3",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes es una herramienta para evaluar el desempeño de la clasificación no supervisada?",
+  "opciones": [
+   "R^2",
+   "Matriz de confusión",
+   "Raíz cuadrada del error cuadrático medio (RMSE)",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 3,
+  "explicacion": "El coeficiente de silueta evalúa qué tan compactos y separados quedan los grupos, sin necesitar etiquetas.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-4",
+  "tema": "Validación",
+  "enunciado": "¿Cuál de las siguientes es una buena particularidad de un conjunto de datos de prueba?",
+  "opciones": [
+   "Cuenta con muchas muestras y pocas características",
+   "Cuenta con pocas muestras y muchas características",
+   "Es representativo de por lo menos una de las más de 3 clases del conjunto de datos.",
+   "Es lo suficientemente grande para producir resultados estadisticamente significativos y representar todas sus clases"
+  ],
+  "correcta": 3,
+  "explicacion": "Un buen conjunto de prueba debe ser grande para que el resultado sea estadísticamente significativo y debe contener TODAS las clases.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-5",
+  "tema": "Validación",
+  "enunciado": "¿Cuál es el propósito de realizar una validación cruzada?",
+  "opciones": [
+   "Evaluar el desempeño predictivo de un modelo entrenado a partir de todo el conjunto de datos",
+   "Evaluar en un solo dataset de validación y entrenar en el mismo dataset",
+   "Entrenar varias veces para disminuir la verosimilitud de la muestra porcentual de los valores propios",
+   "Encontrar los Valores propios de la tangente de Mobius"
+  ],
+  "correcta": 0,
+  "explicacion": "La validación cruzada estima el desempeño que tendría el modelo entrenado con todos los datos, usando varias particiones en vez de una sola.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-6",
+  "tema": "Regularización",
+  "enunciado": "¿Cuál de las siguientes afirmaciones sobre la regularización NO es correcta? (NOTA: definiendo lambda “λ” como en clase; el término que acompaña a la suma de coeficientes de regularización)",
+  "opciones": [
+   "El uso de un valor de lambda demasiado grande puede hacer que su hipótesis no se ajuste a los datos. (underfit)",
+   "El uso de un valor de lambda demasiado grande puede hacer que su hipótesis sobreajuste los datos. (overfit)",
+   "El uso de un valor de lambda muy grande puede dañar el desempeño de su hipótesis.",
+   "El uso de un valor de lambda demasiado pequeño o cero puede hacer que su hipótesis sobreajuste los datos."
+  ],
+  "correcta": 1,
+  "explicacion": "Es la afirmación FALSA: un λ grande restringe el modelo y produce subajuste, nunca sobreajuste.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-12",
+  "tema": "Regresión",
+  "enunciado": "El objetivo de la regresión es:",
+  "opciones": [
+   "Crear un modelo que prediga de manera precisa los valores en un conjunto continuo de la variable dependiente para un conjunto de características de entrada",
+   "Crear un modelo que prediga de manera precisa los valores en un conjunto discreto y finito de valores de la variable dependiente para un conjunto de características de entrada",
+   "Agrupar el problema en un conjunto infinito y real de características.",
+   "Crear una función que siempre se representa en el plano cartesiano como una línea recta."
+  ],
+  "correcta": 0,
+  "explicacion": "La regresión predice una variable dependiente CONTINUA. Si el conjunto de valores es discreto y finito, el problema es de clasificación.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-16",
+  "tema": "Datos faltantes",
+  "enunciado": "Usted cuenta con un conjunto de datos con varias variables usuales en cultivos, el conjunto de datos cuenta con 7 características y una etiqueta con 5 clases. Sin embargo, se ha percatado usted que faltan algunas características de las filas 1 y 3 para algunas muestras, pero todas se encuentran etiquetadas, cuál de las siguientes afirmaciones NO sería una manera adecuada de proceder",
+  "opciones": [
+   "Llene los datos faltantes con el promedio por columnas de la matriz en la forma estándar.",
+   "Llene los datos faltantes con el promedio por columnas de la matriz en la forma estándar teniendo en cuenta para el promedio las características con las etiquetas de la misma clase.",
+   "Use un método de regresión para a partir de las demás características estimar las dos posibles faltantes.",
+   "Llene los datos faltantes con el promedio por filas de la matriz en la forma estándar."
+  ],
+  "correcta": 3,
+  "explicacion": "La pregunta pide la opción que NO sirve. Promediar por FILAS mezcla variables de unidades distintas (humedad con pH, por ejemplo) y el promedio no significa nada. Las otras tres sí son razonables: el promedio por columnas es la imputación simple de siempre, hacerlo por clase la refina, y estimar el faltante con una regresión sobre las demás columnas es imputación multivariada. Ojo con esta última: es justamente la respuesta CORRECTA de la 2023-1-4, donde la pregunta está formulada al derecho.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "LI-1",
+  "tema": "Fundamentos",
+  "enunciado": "Trabaja en un servicio de música y quiere clasificar canciones por género con aprendizaje supervisado. Ya tiene miles de canciones de cada género como datos de entrenamiento. Ahora aparta un subconjunto pequeño y aleatorio de todas las canciones del servicio. ¿Cómo se llama ese subconjunto?",
+  "opciones": [
+   "Un grupo de datos",
+   "El conjunto supervisado",
+   "Datos masivos (big data)",
+   "Conjunto de prueba"
+  ],
+  "correcta": 3,
+  "explicacion": "Es el conjunto de prueba: se aparta antes de entrenar y se usa una sola vez al final para estimar cómo se comportará el modelo con datos nuevos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-2",
+  "tema": "Fundamentos",
+  "enunciado": "En la programación tradicional uno ingresa instrucciones. ¿Qué se ingresa en aprendizaje de máquina?",
+  "opciones": [
+   "Patrones",
+   "Programas",
+   "Reglas",
+   "Datos"
+  ],
+  "correcta": 3,
+  "explicacion": "En programación tradicional el programador escribe las reglas; en aprendizaje de máquina se entregan datos y el algoritmo deduce las reglas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-3",
+  "tema": "Fundamentos",
+  "enunciado": "Su empresa creó un modelo para predecir qué clientes comprarían un seguro, y el modelo resultó con varianza baja y sesgo alto. ¿Qué dice eso del modelo?",
+  "opciones": [
+   "Se equivocaba de forma consistente",
+   "Se equivocaba de forma inconsistente",
+   "Acertaba de forma consistente",
+   "Acertaba y fallaba por igual"
+  ],
+  "correcta": 0,
+  "explicacion": "Sesgo alto significa que las predicciones están lejos del valor correcto; varianza baja significa que son estables entre sí. Juntos: se equivoca siempre, y siempre de la misma manera.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-4",
+  "tema": "Clasificación",
+  "enunciado": "¿Por qué el método Naive Bayes se llama «ingenuo» (naive)?",
+  "opciones": [
+   "Porque supone ingenuamente que no habrá datos",
+   "Porque ni siquiera intenta hacer predicciones precisas",
+   "Porque supone ingenuamente que las características son independientes entre sí",
+   "Porque supone ingenuamente que todas las características dependen unas de otras"
+  ],
+  "correcta": 2,
+  "explicacion": "Supone que, conocida la clase, cada característica es independiente de las demás. Casi nunca se cumple (de ahí lo «ingenuo»), pero el método funciona bien igual.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-5",
+  "tema": "Validación",
+  "enunciado": "¿Cuál es una razón para NO usar los mismos datos como entrenamiento y como prueba?",
+  "opciones": [
+   "Es casi seguro que el modelo quedará subajustado",
+   "Escogerá el algoritmo equivocado",
+   "Puede que no tenga datos suficientes para los dos",
+   "Es casi seguro que el modelo quedará sobreajustado"
+  ],
+  "correcta": 3,
+  "explicacion": "Evaluar con los mismos datos del entrenamiento premia memorizar: el resultado se ve excelente y no dice nada sobre cómo se comportará con datos nuevos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-6",
+  "tema": "Ensambles",
+  "enunciado": "El bosque aleatorio (random forest) es una versión mejorada de cuál técnica anterior?",
+  "opciones": [
+   "Árboles agregados",
+   "Árboles con boosting",
+   "Árboles con bagging (embolsado)",
+   "Árboles apilados"
+  ],
+  "correcta": 2,
+  "explicacion": "Random forest parte del bagging de árboles y le agrega una idea: en cada división solo considera un subconjunto aleatorio de características, lo que hace a los árboles menos parecidos entre sí.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-7",
+  "tema": "No supervisado",
+  "enunciado": "¿Cuál afirmación sobre K-medias es verdadera?",
+  "opciones": [
+   "Los centroides iniciales a veces se escogen al azar",
+   "K-medias se usa a menudo en aprendizaje supervisado",
+   "El número de grupos siempre se escoge al azar",
+   "Para que sea preciso, conviene que los centroides queden fuera del grupo"
+  ],
+  "correcta": 0,
+  "explicacion": "La inicialización de los centroides suele ser aleatoria (o con k-means++). Por eso el resultado cambia entre corridas y conviene repetir con varias semillas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-8",
+  "tema": "Clasificación",
+  "enunciado": "Su equipo debe construir un clasificador binario y el criterio número uno es que la predicción sea lo más rápida posible al usarlo, incluso en un dispositivo pequeño. ¿Cuál escoge?",
+  "opciones": [
+   "Bosque aleatorio",
+   "Regresión logística",
+   "KNN",
+   "Red neuronal profunda"
+  ],
+  "correcta": 1,
+  "explicacion": "Una vez entrenada, la regresión logística solo hace una suma ponderada y una sigmoide. KNN debe comparar contra todo el conjunto guardado, y las otras dos son mucho más pesadas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-9",
+  "tema": "Fundamentos",
+  "enunciado": "Su sistema intenta describir una estructura oculta a partir de datos SIN etiquetar. ¿Cómo se llama ese tipo de aprendizaje?",
+  "opciones": [
+   "Supervisado",
+   "No supervisado",
+   "Por refuerzo",
+   "Semi-no-supervisado"
+  ],
+  "correcta": 1,
+  "explicacion": "Sin etiquetas y buscando estructura: aprendizaje no supervisado (agrupamiento, reducción de dimensionalidad).",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-10",
+  "tema": "Clasificación",
+  "enunciado": "Está usando K vecinos más cercanos con K = 1. ¿Qué espera ver al entrenar el modelo?",
+  "opciones": [
+   "Varianza alta y sesgo bajo",
+   "Sesgo bajo y varianza baja",
+   "Varianza baja y sesgo alto",
+   "Sesgo alto y varianza alta"
+  ],
+  "correcta": 0,
+  "explicacion": "Con K = 1 cada punto se clasifica por su vecino más cercano: el modelo sigue el ruido de los datos (varianza alta) pero no impone ninguna forma previa (sesgo bajo).",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-11",
+  "tema": "Clasificación",
+  "enunciado": "¿Cuál de estas opciones es la mejor para clasificación binaria?",
+  "opciones": [
+   "K-medias",
+   "Regresión logística",
+   "Regresión lineal",
+   "Análisis de componentes principales (PCA)"
+  ],
+  "correcta": 1,
+  "explicacion": "La regresión logística está diseñada para clasificación binaria: devuelve la probabilidad de pertenecer a la clase 1. K-medias y PCA no son supervisados y la regresión lineal predice números continuos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-12",
+  "tema": "Clasificación",
+  "enunciado": "En K vecinos más cercanos, entre más cerca esté de un vecino, más probable es que...",
+  "opciones": [
+   "comparta características con él",
+   "haga parte del nodo raíz",
+   "tenga una conexión euclidiana",
+   "haga parte del mismo grupo"
+  ],
+  "correcta": 0,
+  "explicacion": "KNN asume que la cercanía en el espacio de características implica parecido, y por eso la etiqueta de los vecinos sirve para predecir la propia.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-13",
+  "tema": "Clasificación",
+  "enunciado": "Naive Bayes mira cada característica ______ y calcula la probabilidad de pertenecer a cada clase.",
+  "opciones": [
+   "condicional",
+   "multiclase",
+   "independiente",
+   "binaria"
+  ],
+  "correcta": 2,
+  "explicacion": "Trata cada característica como independiente de las demás dada la clase, y por eso puede multiplicar las probabilidades individuales.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-14",
+  "tema": "Ensambles",
+  "enunciado": "Alguien de su equipo propone usar árboles de decisión, Naive Bayes y K vecinos más cercanos, los tres a la vez sobre los mismos datos, y combinar los resultados. ¿Cómo se llama eso?",
+  "opciones": [
+   "Análisis de regresión",
+   "Aprendizaje no supervisado",
+   "Modelado de varianza alta",
+   "Modelado por ensamble"
+  ],
+  "correcta": 3,
+  "explicacion": "Combinar varios modelos distintos para obtener una predicción conjunta es un ensamble. La idea es que los errores de unos se compensen con los aciertos de otros.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-15",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de los siguientes NO es aprendizaje supervisado?",
+  "opciones": [
+   "Árbol de decisión",
+   "Regresión lineal",
+   "PCA",
+   "Naive Bayes"
+  ],
+  "correcta": 2,
+  "explicacion": "PCA no usa etiquetas: solo busca las direcciones de máxima varianza en las características.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-16",
+  "tema": "Optimización",
+  "enunciado": "¿Cuál función de error es la más adecuada para el descenso de gradiente en regresión logística?",
+  "opciones": [
+   "La función de entropía",
+   "El error cuadrático",
+   "La entropía cruzada",
+   "El número de errores"
+  ],
+  "correcta": 2,
+  "explicacion": "Con error cuadrático la función de costo de la regresión logística deja de ser convexa. La entropía cruzada sí lo es y además penaliza fuertemente las predicciones seguras y equivocadas.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-17",
+  "tema": "Fundamentos",
+  "enunciado": "______ se refiere a un modelo que no logra ajustar ni siquiera los datos de entrenamiento, y tampoco generaliza.",
+  "opciones": [
+   "Buen ajuste",
+   "Sobreajuste",
+   "Subajuste",
+   "Todas las anteriores"
+  ],
+  "correcta": 2,
+  "explicacion": "Subajuste (underfitting): el modelo es demasiado simple para el problema y falla en entrenamiento y en prueba por igual.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-18",
+  "tema": "Fundamentos",
+  "enunciado": "¿Qué significa que su modelo esté subajustado (underfit)?",
+  "opciones": [
+   "Que hay muy pocos datos de entrenamiento",
+   "Que hay demasiados datos de entrenamiento",
+   "Que hay poca varianza pero sesgo alto",
+   "Que el modelo tiene sesgo bajo pero varianza alta"
+  ],
+  "correcta": 2,
+  "explicacion": "El subajuste es el extremo de sesgo alto: el modelo es tan rígido que se equivoca de forma sistemática, aunque de manera estable.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-19",
+  "tema": "Redes neuronales",
+  "enunciado": "Las activaciones de las clases A, B y C antes de la softmax fueron 10, 8 y 3. ¿Cuál es aproximadamente la diferencia entre los valores de softmax de A y de B?",
+  "opciones": [
+   "76 %",
+   "88 %",
+   "12 %",
+   "0,0008 %"
+  ],
+  "correcta": 0,
+  "explicacion": "softmax(A) ≈ 0,876 y softmax(B) ≈ 0,119, así que la diferencia es de unos 0,757, es decir 76 %. Note cómo la exponencial amplifica una diferencia de 2 en la entrada.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-20",
+  "tema": "Datos faltantes",
+  "enunciado": "El conjunto que acaba de recolectar tiene muchos valores faltantes. ¿Qué acción ayuda a minimizar el problema?",
+  "opciones": [
+   "Rellenar con valores aleatorios controlados",
+   "Reemplazar con el promedio de todas las muestras",
+   "Eliminar las muestras defectuosas",
+   "Imputación"
+  ],
+  "correcta": 3,
+  "explicacion": "«Imputación» es el nombre general de la estrategia: rellenar con un valor razonable (media, mediana, moda, un modelo). Las otras opciones son casos particulares o pierden datos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-21",
+  "tema": "PCA",
+  "enunciado": "¿Cuál de los siguientes métodos se puede usar tanto como aprendizaje no supervisado como para reducir dimensionalidad?",
+  "opciones": [
+   "SVM",
+   "PCA",
+   "LDA",
+   "t-SNE"
+  ],
+  "correcta": 1,
+  "explicacion": "PCA no usa etiquetas y produce un espacio de menor dimensión. LDA sí necesita etiquetas y t-SNE sirve para visualizar, no para transformar datos nuevos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-22",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Cuál es la motivación principal para usar funciones de activación en una red neuronal?",
+  "opciones": [
+   "Capturar patrones complejos no lineales",
+   "Convertir valores continuos en «encendido» (1) o «apagado» (0)",
+   "Ayudar a evitar el problema del gradiente que se desvanece",
+   "Poder activar cada neurona de forma individual"
+  ],
+  "correcta": 0,
+  "explicacion": "Sin activación no lineal, apilar capas equivale a una sola transformación lineal: la red no podría resolver la XOR ni ningún problema no lineal.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-23",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Cuál función de pérdida encaja mejor en un problema supervisado categórico (discreto)?",
+  "opciones": [
+   "Divergencia de Kullback-Leibler",
+   "Entropía cruzada binaria",
+   "Error cuadrático medio (MSE)",
+   "Cualquier pérdida L2"
+  ],
+  "correcta": 1,
+  "explicacion": "Para clases se usa entropía cruzada (binaria con dos clases, categórica con más). El MSE y las pérdidas L2 son para regresión.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-24",
+  "tema": "Fundamentos",
+  "enunciado": "Los datos de su modelo tienen sesgo bajo y varianza baja. ¿Cómo espera ver los puntos en el diagrama?",
+  "opciones": [
+   "Agrupados y sobre el valor esperado",
+   "Agrupados pero lejos del valor esperado",
+   "Dispersos alrededor del valor esperado",
+   "Dispersos y lejos del valor esperado"
+  ],
+  "correcta": 0,
+  "explicacion": "Sesgo bajo significa centrados en el objetivo y varianza baja significa poco dispersos: el mejor de los casos.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-25",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál es una de las formas más efectivas de corregir el subajuste de un modelo?",
+  "opciones": [
+   "Crear grupos de entrenamiento",
+   "Quitar características",
+   "Usar aprendizaje por refuerzo",
+   "Agregar más características"
+  ],
+  "correcta": 3,
+  "explicacion": "El subajuste viene de un modelo demasiado simple: se corrige dándole más información (más características) o más capacidad, no quitándosela.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-26",
+  "tema": "Fundamentos",
+  "enunciado": "En aprendizaje supervisado hay que equilibrar el subajuste y el sobreajuste. ¿Cómo se llama ese equilibrio?",
+  "opciones": [
+   "El reto de lo escaso y lo excesivo",
+   "El equilibrio entre agrupamiento y clasificación",
+   "El compromiso entre sesgo y varianza",
+   "El reto del conjunto multiclase"
+  ],
+  "correcta": 2,
+  "explicacion": "Es el compromiso sesgo-varianza: bajar uno normalmente sube el otro, y el buen modelo está en el punto medio.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-27",
+  "tema": "No supervisado",
+  "enunciado": "K-medias es un algoritmo de qué tipo de aprendizaje?",
+  "opciones": [
+   "Por refuerzo",
+   "Supervisado",
+   "No supervisado",
+   "De clasificación"
+  ],
+  "correcta": 2,
+  "explicacion": "Agrupa sin usar etiquetas: es no supervisado. Ojo: agrupar no es clasificar, porque los grupos no tienen un nombre dado de antemano.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-28",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál es la mejor definición de sesgo (bias) en un modelo?",
+  "opciones": [
+   "Es cuando los valores predichos quedan dispersos",
+   "Es la distancia entre el valor predicho y el valor real",
+   "Es cuando los datos están mal por distintas razones",
+   "Es cuando los valores se desvían siempre el mismo porcentaje"
+  ],
+  "correcta": 1,
+  "explicacion": "El sesgo mide qué tan lejos queda sistemáticamente la predicción del valor real. La dispersión alrededor de esa predicción es la varianza.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-29",
+  "tema": "Clasificación",
+  "enunciado": "¿Cuándo se usa más comúnmente un árbol de decisión?",
+  "opciones": [
+   "Con productos de datos masivos",
+   "En problemas supervisados de clasificación binaria",
+   "Para encontrar el mejor grupo de datos",
+   "Para determinar la «Q» en aprendizaje por refuerzo"
+  ],
+  "correcta": 1,
+  "explicacion": "Los árboles son supervisados y se usan sobre todo en clasificación, con la ventaja de que el resultado se puede leer y explicar.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-30",
+  "tema": "No supervisado",
+  "enunciado": "¿Cuál de los siguientes algoritmos es no supervisado?",
+  "opciones": [
+   "Bosque aleatorio",
+   "K vecinos más cercanos",
+   "Máquinas de vectores de soporte",
+   "K-medias"
+  ],
+  "correcta": 3,
+  "explicacion": "Los otros tres necesitan etiquetas. Cuidado con confundir K-medias (no supervisado) con K vecinos más cercanos (supervisado) solo porque ambos llevan «K».",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-31",
+  "tema": "Ensambles",
+  "enunciado": "Promediar la salida de varios árboles de decisión sirve para...",
+  "opciones": [
+   "Aumentar la varianza",
+   "Aumentar el sesgo",
+   "Disminuir la varianza",
+   "Disminuir el sesgo"
+  ],
+  "correcta": 2,
+  "explicacion": "Un árbol solo tiene varianza alta: cambia mucho con pequeños cambios en los datos. Al promediar muchos árboles los errores se compensan y la varianza baja. Es la idea del bagging y del bosque aleatorio.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-32",
+  "tema": "Datos faltantes",
+  "enunciado": "Complete: dos técnicas de imputación multivariada son el imputador ______ y el imputador ______.",
+  "opciones": [
+   "supervisado, no supervisado",
+   "iterativo, por KNN",
+   "por similitud, regresivo",
+   "normalizado, escalado"
+  ],
+  "correcta": 1,
+  "explicacion": "En scikit-learn son IterativeImputer (modela cada columna a partir de las demás) y KNNImputer (usa el promedio de las muestras más parecidas). Multivariada significa que usa las otras columnas, no solo la que falta.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "LI-33",
+  "tema": "Datos faltantes",
+  "enunciado": "¿Cómo se manejan los datos faltantes o corruptos en un conjunto?",
+  "opciones": [
+   "Eliminando las filas o columnas afectadas",
+   "Reemplazando por la media, la mediana o la moda",
+   "Asignando una categoría propia para «faltante»",
+   "Todas las anteriores"
+  ],
+  "correcta": 3,
+  "explicacion": "Las tres son estrategias válidas y la elección depende de cuántos faltan y de por qué faltan. Lo que no se vale es ignorarlo o decidirlo sin justificarlo.",
+  "fuente": "Banco LinkedIn (traducido)"
+ },
+ {
+  "id": "C-1",
+  "tema": "Validación",
+  "enunciado": "En la validación cruzada de N pliegues, ¿qué significa que los pliegues sean «estratificados»?",
+  "opciones": [
+   "Que los pliegues se ordenan de mayor a menor tamaño",
+   "Que cada pliegue conserva la proporción de clases del conjunto completo",
+   "Que cada pliegue contiene una sola clase",
+   "Que los datos se escalan dentro de cada pliegue"
+  ],
+  "correcta": 1,
+  "explicacion": "Estratificar mantiene en cada pliegue la misma proporción de clases que en el conjunto original. Sin eso, en un conjunto ordenado por clase un pliegue podría quedar con una sola clase. En scikit-learn, cv=5 con un clasificador ya usa StratifiedKFold.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-2",
+  "tema": "Validación",
+  "enunciado": "Usted reserva el 20 % de los datos como prueba final, hace validación cruzada sobre el 80 % restante para escoger el modelo, y el resultado no le gusta. Entonces mira la prueba final, cambia un hiperparámetro y vuelve a medir en ella. ¿Qué problema tiene eso?",
+  "opciones": [
+   "Ninguno, para eso está la prueba final",
+   "Que la prueba final deja de ser independiente y el resultado queda optimista",
+   "Que hay que volver a escalar los datos",
+   "Que la validación cruzada ya no sirve"
+  ],
+  "correcta": 1,
+  "explicacion": "Si se toma una decisión mirando la prueba final, esta pasó a influir en el modelo y deja de estimar el desempeño con datos nuevos. La prueba final se mira UNA sola vez.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-3",
+  "tema": "Validación",
+  "enunciado": "¿Cuál es la principal desventaja de la validación cruzada de N pliegues frente al Holdout?",
+  "opciones": [
+   "Da un resultado menos confiable",
+   "No permite calcular la desviación del resultado",
+   "Cuesta N veces más tiempo de cómputo",
+   "No se puede usar con clasificación"
+  ],
+  "correcta": 2,
+  "explicacion": "Hay que entrenar N modelos en lugar de uno. Se gana confiabilidad y se paga con tiempo de cómputo; con modelos que tardan horas puede ser inviable.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-4",
+  "tema": "Validación",
+  "enunciado": "¿Por qué el escalado y la imputación deben ir DENTRO de un Pipeline cuando se usa validación cruzada?",
+  "opciones": [
+   "Porque así el código queda más corto",
+   "Porque si se ajustan antes, el pliegue de validación influye en la transformación y hay fuga de datos",
+   "Porque scikit-learn lo exige",
+   "Porque de lo contrario los pliegues quedan desbalanceados"
+  ],
+  "correcta": 1,
+  "explicacion": "Si la media del escalador se calcula con todos los datos, incluye los del pliegue de validación: ese pliegue ya influyó en el modelo. Con Pipeline, cada pliegue reajusta las transformaciones desde cero.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-5",
+  "tema": "PCA",
+  "enunciado": "Antes de aplicar PCA, ¿por qué conviene normalizar las características?",
+  "opciones": [
+   "Para que el algoritmo corra más rápido",
+   "Porque si no, las características con valores más grandes dominan los primeros componentes",
+   "Porque PCA no funciona con números negativos",
+   "Para que los componentes queden ortogonales"
+  ],
+  "correcta": 1,
+  "explicacion": "PCA busca las direcciones de máxima varianza. Sin normalizar, una característica medida en miles aporta más varianza que una medida en unidades, solo por su escala, no por su información.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-6",
+  "tema": "PCA",
+  "enunciado": "Aplica PCA conservando TODAS las componentes (por ejemplo, 8 de 8) con whiten=False. ¿Qué efecto tiene sobre un modelo basado en distancias como KNN?",
+  "opciones": [
+   "Mejora mucho el resultado",
+   "Lo empeora siempre",
+   "Prácticamente ninguno: es solo una rotación y las distancias se conservan",
+   "Elimina el ruido de los datos"
+  ],
+  "correcta": 2,
+  "explicacion": "Sin reducir componentes y sin blanquear, PCA solo rota los ejes. Las distancias entre puntos no cambian, así que KNN da el mismo resultado.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-7",
+  "tema": "PCA",
+  "enunciado": "¿Qué hace la opción whiten=True en el PCA de scikit-learn?",
+  "opciones": [
+   "Elimina las componentes con poca varianza",
+   "Divide cada componente por su desviación, dejando todas con varianza 1",
+   "Normaliza los datos antes de calcular los componentes",
+   "Convierte los datos a blanco y negro"
+  ],
+  "correcta": 1,
+  "explicacion": "Blanquear rota y además reescala: la matriz de covarianza queda igual a la identidad. El riesgo es que amplifica las componentes de poca varianza, que suelen ser ruido.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-8",
+  "tema": "PCA",
+  "enunciado": "¿Cómo se escoge razonablemente el número de componentes a conservar?",
+  "opciones": [
+   "El que dé el mayor coeficiente de silueta",
+   "El menor número que conserve un porcentaje objetivo de la varianza acumulada (por ejemplo 95 %)",
+   "Siempre dos, para poder graficar",
+   "El número de clases del problema"
+  ],
+  "correcta": 1,
+  "explicacion": "Se mira la curva de varianza acumulada y se toma el k más pequeño que alcance el umbral. En scikit-learn se puede pedir directamente con PCA(n_components=0.95).",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-9",
+  "tema": "Redes neuronales",
+  "enunciado": "En una red neuronal para clasificación multiclase, ¿qué hace la función softmax en la capa de salida?",
+  "opciones": [
+   "Convierte las salidas en ceros y unos",
+   "Convierte las salidas en una distribución de probabilidad que suma 1",
+   "Elimina las salidas negativas",
+   "Normaliza las entradas de la red"
+  ],
+  "correcta": 1,
+  "explicacion": "Softmax toma los valores z de la capa de salida y los convierte en probabilidades positivas que suman 1. Después, argmax escoge la clase ganadora.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-10",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Por qué no basta con poner una sigmoide en cada salida y umbralizar en 0,5 para un problema de 4 clases?",
+  "opciones": [
+   "Porque la sigmoide no existe para más de dos clases",
+   "Porque las salidas son independientes: pueden pasar dos del umbral o ninguna, y no suman 1",
+   "Porque la sigmoide es más lenta que softmax",
+   "Porque hay que usar ReLU en la salida"
+  ],
+  "correcta": 1,
+  "explicacion": "Con sigmoides independientes cada salida decide por su cuenta. Pueden ganar dos clases a la vez, o ninguna, y los valores no forman una distribución de probabilidad.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-11",
+  "tema": "Redes neuronales",
+  "enunciado": "En una red neuronal usada para REGRESIÓN, ¿qué activación lleva la capa de salida?",
+  "opciones": [
+   "Softmax",
+   "Sigmoide",
+   "ReLU",
+   "Ninguna: la salida es lineal"
+  ],
+  "correcta": 3,
+  "explicacion": "Como la respuesta es un número en las unidades del problema, la salida se deja sin activación. En scikit-learn se ve como out_activation_ = 'identity'.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-12",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Por qué una sola neurona no puede resolver la función XOR?",
+  "opciones": [
+   "Porque la XOR tiene cuatro entradas",
+   "Porque la sigmoide no es derivable",
+   "Porque una neurona traza una sola frontera recta y la XOR no es linealmente separable",
+   "Porque faltan datos de entrenamiento"
+  ],
+  "correcta": 2,
+  "explicacion": "Una neurona calcula una combinación lineal y la pasa por una activación: su frontera de decisión es una recta. Los puntos de la XOR no se pueden separar con una sola recta; hace falta una capa oculta.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-13",
+  "tema": "Redes neuronales",
+  "enunciado": "¿Qué aporta una capa oculta en una red neuronal?",
+  "opciones": [
+   "Acelera el entrenamiento",
+   "Transforma los datos a un espacio donde sí pueden separarse linealmente",
+   "Reduce el número de parámetros",
+   "Evita tener que normalizar los datos"
+  ],
+  "correcta": 1,
+  "explicacion": "La capa oculta reacomoda los datos. En la XOR, después de la capa oculta los puntos quedan en posiciones donde una sola recta ya los separa.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-14",
+  "tema": "Métricas",
+  "enunciado": "¿Qué significa que el R² de un modelo en el conjunto de prueba sea negativo?",
+  "opciones": [
+   "Que hubo un error de cálculo",
+   "Que el modelo predice peor que simplemente predecir la media",
+   "Que las predicciones son negativas",
+   "Que el modelo está perfectamente ajustado"
+  ],
+  "correcta": 1,
+  "explicacion": "R² = 0 equivale a predecir siempre la media. Un valor negativo significa que el modelo lo hace todavía peor que eso. Es perfectamente posible en prueba y es una señal de alarma.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-15",
+  "tema": "Métricas",
+  "enunciado": "Dos modelos predicen el mismo conjunto. El modelo A tiene MAE 10 y RMSE 11; el modelo B tiene MAE 10 y RMSE 30. ¿Qué se puede concluir?",
+  "opciones": [
+   "El modelo B es mejor porque tiene más RMSE",
+   "El modelo B tiene algunos errores muy grandes, aunque en promedio se equivoque igual",
+   "Los dos modelos son idénticos",
+   "El modelo A tiene valores atípicos"
+  ],
+  "correcta": 1,
+  "explicacion": "El RMSE eleva los errores al cuadrado, así que crece mucho con los errores grandes. Un RMSE muy por encima del MAE delata errores grandes y aislados.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-16",
+  "tema": "Métricas",
+  "enunciado": "¿Cuándo NO conviene usar el MAPE (error porcentual absoluto medio)?",
+  "opciones": [
+   "Cuando los datos tienen muchas características",
+   "Cuando algún valor real es cero o muy cercano a cero",
+   "Cuando el modelo es una red neuronal",
+   "Cuando hay más de dos clases"
+  ],
+  "correcta": 1,
+  "explicacion": "El MAPE divide por el valor real. Si es cero no está definido, y si es muy pequeño el porcentaje se dispara aunque el error absoluto sea mínimo.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-17",
+  "tema": "Métricas",
+  "enunciado": "En un problema de clasificación con 95 % de muestras de una clase y 5 % de la otra, un modelo que siempre predice la clave mayoritaria obtiene 95 % de exactitud. ¿Qué métrica revela mejor que el modelo es inútil?",
+  "opciones": [
+   "La exactitud (accuracy)",
+   "El R²",
+   "El F1 o el MCC sobre la clase minoritaria",
+   "El coeficiente de silueta"
+  ],
+  "correcta": 2,
+  "explicacion": "Ese modelo nunca detecta la clase minoritaria, así que su F1 sobre esa clase es 0. El F1 y el MCC sí reflejan el fracaso; la exactitud lo esconde.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-18",
+  "tema": "Métricas",
+  "enunciado": "El residual se define como valor real menos valor predicho. Si el histograma de residuales está desplazado hacia valores positivos, ¿qué ocurre?",
+  "opciones": [
+   "El modelo sobrestima sistemáticamente",
+   "El modelo subestima sistemáticamente",
+   "El modelo está sobreajustado",
+   "El modelo tiene varianza alta"
+  ],
+  "correcta": 1,
+  "explicacion": "Residual positivo significa real mayor que predicho, es decir que el modelo se queda corto: subestima.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-19",
+  "tema": "Selección de modelos",
+  "enunciado": "¿Para qué sirve una línea base (por ejemplo DummyClassifier) al comparar modelos?",
+  "opciones": [
+   "Para acelerar el entrenamiento",
+   "Para saber qué resultado es el mínimo aceptable antes de decir que un modelo aporta",
+   "Para imputar los datos faltantes",
+   "Para escoger los hiperparámetros"
+  ],
+  "correcta": 1,
+  "explicacion": "La línea base responde sin aprender nada. Si un modelo no la supera claramente, no está aportando, por mucho que su métrica suene alta.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-20",
+  "tema": "Selección de modelos",
+  "enunciado": "Compara siete modelos con los mismos 5 pliegues. El mejor tiene F1 = 0,720 ± 0,041 y el segundo 0,710 ± 0,037. ¿Qué es lo más razonable concluir?",
+  "opciones": [
+   "Que el primero es claramente superior",
+   "Que están empatados y hay que desempatar con otro criterio",
+   "Que hay que repetir todo con más pliegues",
+   "Que el segundo modelo está sobreajustado"
+  ],
+  "correcta": 1,
+  "explicacion": "La diferencia (0,010) es mucho menor que la desviación entre pliegues (~0,04). Están empatados y conviene decidir por tiempo de cómputo, interpretabilidad o simplicidad.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-21",
+  "tema": "Selección de modelos",
+  "enunciado": "¿Qué hace GridSearchCV?",
+  "opciones": [
+   "Escoge automáticamente el mejor algoritmo entre todos los de scikit-learn",
+   "Prueba todas las combinaciones de una rejilla de hiperparámetros, evaluando cada una con validación cruzada",
+   "Reduce la dimensionalidad antes de entrenar",
+   "Divide los datos en entrenamiento y prueba"
+  ],
+  "correcta": 1,
+  "explicacion": "Recorre el producto cartesiano de la rejilla y, para cada combinación, hace la validación cruzada completa. Por eso el costo crece tan rápido: combinaciones × pliegues entrenamientos.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-22",
+  "tema": "Selección de modelos",
+  "enunciado": "¿Cuándo conviene RandomizedSearchCV en lugar de GridSearchCV?",
+  "opciones": [
+   "Cuando hay pocos hiperparámetros y pocos valores",
+   "Cuando la rejilla completa es demasiado grande para el tiempo disponible",
+   "Cuando los datos tienen faltantes",
+   "Cuando el problema es no supervisado"
+  ],
+  "correcta": 1,
+  "explicacion": "Con muchos hiperparámetros la rejilla completa explota. La búsqueda al azar explora con un presupuesto fijo y, como normalmente pocos hiperparámetros importan de verdad, suele llegar casi igual de lejos.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-23",
+  "tema": "Selección de modelos",
+  "enunciado": "Una librería de AutoML encuentra un modelo con F1 = 0,738 frente a 0,729 de su SVM ajustada a mano, cuya desviación entre pliegues es 0,049. ¿Qué es lo más defendible?",
+  "opciones": [
+   "Usar el AutoML, porque la métrica es mayor",
+   "Quedarse con la SVM: la ventaja es mucho menor que el ruido y el modelo es más simple de explicar",
+   "Repetir el AutoML con más tiempo hasta que gane por más",
+   "Promediar los dos modelos"
+  ],
+  "correcta": 1,
+  "explicacion": "Una ventaja de 0,009 frente a una desviación de 0,049 es ruido. Entre dos modelos empatados conviene el más simple, que es más fácil de explicar y de mantener.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-24",
+  "tema": "Series de tiempo",
+  "enunciado": "¿Por qué NO se puede usar train_test_split al azar en una serie de tiempo?",
+  "opciones": [
+   "Porque los datos no están normalizados",
+   "Porque el modelo entrenaría con datos del futuro para predecir el pasado: es fuga de datos",
+   "Porque las series de tiempo no tienen etiquetas",
+   "Porque hay demasiadas muestras"
+  ],
+  "correcta": 1,
+  "explicacion": "El orden importa. Si una muestra posterior cae en entrenamiento y una anterior en prueba, el modelo está usando información del futuro. La partición se hace por fecha.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-25",
+  "tema": "Series de tiempo",
+  "enunciado": "¿Cuál es la línea base obligatoria al predecir una serie de tiempo?",
+  "opciones": [
+   "Predecir siempre cero",
+   "Predecir el promedio histórico",
+   "La predicción ingenua: el valor siguiente es igual al último observado",
+   "Una red LSTM pequeña"
+  ],
+  "correcta": 2,
+  "explicacion": "La predicción ingenua ŷ(t+1) = y(t) es casi gratis y en muchas series es dificilísima de superar. Si el modelo no le gana, no aporta.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-26",
+  "tema": "Series de tiempo",
+  "enunciado": "Entrena una red para predecir el valor de una serie con tendencia creciente, y en prueba obtiene R² negativo. ¿Cuál es la causa más probable?",
+  "opciones": [
+   "Faltan épocas de entrenamiento",
+   "La red es demasiado pequeña",
+   "Los valores de prueba están fuera del rango visto en el entrenamiento y la red no extrapola",
+   "Hay que cambiar la función de activación"
+  ],
+  "correcta": 2,
+  "explicacion": "Una red interpola pero no extrapola. Con tendencia, todo el tramo de prueba queda por encima de lo visto. La solución es predecir el CAMBIO (la diferencia) y reconstruir sumando.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-27",
+  "tema": "Series de tiempo",
+  "enunciado": "¿Qué ventaja tiene predecir la diferencia y(t) − y(t−1) en lugar del valor y(t)?",
+  "opciones": [
+   "Que se necesitan menos datos",
+   "Que la serie de diferencias no tiene tendencia, así que prueba cae en el mismo rango que entrenamiento",
+   "Que elimina la estacionalidad",
+   "Que permite usar clasificación en lugar de regresión"
+  ],
+  "correcta": 1,
+  "explicacion": "Al diferenciar se quita la tendencia. Los valores de prueba quedan dentro del rango que la red vio al entrenar y el problema deja de requerir extrapolación.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-28",
+  "tema": "Datos faltantes",
+  "enunciado": "Imputa la edad faltante de 263 pasajeros con la mediana. ¿Qué efecto secundario tiene eso sobre la distribución de la variable?",
+  "opciones": [
+   "La distribución no cambia",
+   "Aparece un pico artificial en el valor de la mediana",
+   "La variable queda normalizada",
+   "Se pierde la correlación con las demás variables"
+  ],
+  "correcta": 1,
+  "explicacion": "Todos los faltantes reciben el mismo número, así que se acumula un pico en ese valor y la varianza de la columna baja artificialmente.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-29",
+  "tema": "Datos faltantes",
+  "enunciado": "Al preparar los datos, ¿con qué conjunto se debe AJUSTAR el imputador?",
+  "opciones": [
+   "Con todos los datos, antes de partir",
+   "Solo con el conjunto de entrenamiento",
+   "Solo con el conjunto de prueba",
+   "Con cada muestra por separado"
+  ],
+  "correcta": 1,
+  "explicacion": "Igual que el escalador: ajustar con todos los datos mete información de la prueba en el entrenamiento. Se ajusta con entrenamiento y se aplica (transform) a los demás.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "C-30",
+  "tema": "Datos",
+  "enunciado": "En el conjunto del Titanic hay una columna «bote salvavidas». ¿Por qué no se puede usar como característica para predecir la supervivencia?",
+  "opciones": [
+   "Porque tiene muchos valores faltantes",
+   "Porque es texto y no número",
+   "Porque solo se conoce después de saber si la persona sobrevivió: es fuga de datos",
+   "Porque está correlacionada con la clase del pasaje"
+  ],
+  "correcta": 2,
+  "explicacion": "Saber en qué bote iba alguien implica que sobrevivió. El modelo acertaría casi todo en las pruebas y fallaría por completo en un caso real, donde ese dato no existe al momento de predecir.",
+  "fuente": "Curso 2026-3"
+ },
+ {
+  "id": "S-1",
+  "tema": "Regresión",
+  "enunciado": "En una regresión lineal ajustada por mínimos cuadrados, ¿qué cantidad se minimiza exactamente?",
+  "opciones": [
+   "La suma de los residuales",
+   "La suma de los cuadrados de los residuales",
+   "El residual más grande",
+   "La suma de los valores absolutos de los residuales"
+  ],
+  "correcta": 1,
+  "explicacion": "Mínimos cuadrados minimiza Σ(yᵢ − ŷᵢ)². No se minimiza la suma de los residuales a secas porque los positivos y los negativos se cancelan. Minimizar la suma de valores absolutos es otro método (regresión por mínima desviación absoluta), más robusto a atípicos pero sin solución cerrada.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-2",
+  "tema": "Regresión",
+  "enunciado": "Tiene una regresión lineal con 5 características y 2000 muestras. ¿Qué ventaja tiene resolverla con la ecuación normal en lugar de descenso de gradiente?",
+  "opciones": [
+   "Siempre es más rápida, sin importar el número de características",
+   "Da la solución exacta de una vez, sin escoger tasa de aprendizaje ni iterar",
+   "Es la única forma de incluir el término independiente",
+   "Permite usar regularización, cosa que el descenso de gradiente no"
+  ],
+  "correcta": 1,
+  "explicacion": "La ecuación normal resuelve θ = (XᵀX)⁻¹Xᵀy en un paso: no hay que elegir α ni decidir cuándo parar. Su límite es el costo de invertir XᵀX, que crece con el cubo del número de características; con pocas características como aquí, no es problema.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-3",
+  "tema": "Datos",
+  "enunciado": "¿Por qué conviene escalar las características antes de usar KNN o SVM, pero no hace falta para un árbol de decisión?",
+  "opciones": [
+   "Porque los árboles solo aceptan variables categóricas",
+   "Porque KNN y SVM dependen de distancias, y el árbol parte cada característica por un umbral propio",
+   "Porque el árbol escala los datos internamente",
+   "Porque los árboles no usan todas las características"
+  ],
+  "correcta": 1,
+  "explicacion": "KNN y SVM miden distancias entre puntos: una característica con rango grande domina la distancia solo por su escala. El árbol evalúa cada característica por separado buscando un umbral de corte, y ese corte no cambia si la variable se multiplica por una constante.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-4",
+  "tema": "Clasificación",
+  "enunciado": "En una regresión logística baja el umbral de decisión de 0,5 a 0,3. ¿Qué le pasa típicamente a la precisión y a la exhaustividad (recall)?",
+  "opciones": [
+   "Las dos suben",
+   "Las dos bajan",
+   "Sube la exhaustividad y baja la precisión",
+   "Sube la precisión y baja la exhaustividad"
+  ],
+  "correcta": 2,
+  "explicacion": "Con un umbral más bajo se marcan como positivos más casos: se escapan menos positivos reales (sube la exhaustividad) pero entran más falsos positivos (baja la precisión). Mover el umbral no mejora el modelo, solo recorre el compromiso entre las dos métricas; eso es justamente lo que dibuja la curva ROC.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-5",
+  "tema": "No supervisado",
+  "enunciado": "¿Qué cantidad minimiza el algoritmo K-medias en cada iteración?",
+  "opciones": [
+   "La distancia entre los centroides",
+   "La suma de las distancias al cuadrado de cada punto al centroide de su grupo",
+   "El número de grupos necesarios",
+   "La varianza total del conjunto de datos"
+  ],
+  "correcta": 1,
+  "explicacion": "K-medias minimiza la inercia: Σ‖xᵢ − μ_{c(i)}‖². Por eso alterna dos pasos que nunca la aumentan: asignar cada punto a su centroide más cercano y recalcular cada centroide como el promedio de sus puntos. Garantiza llegar a un mínimo local, no al global, y de ahí que convenga repetir con varias inicializaciones.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-6",
+  "tema": "Métricas",
+  "enunciado": "Está construyendo un tamizaje que detecta una enfermedad grave pero tratable. ¿Qué métrica conviene priorizar y por qué?",
+  "opciones": [
+   "La precisión, porque hay que evitar alarmar a gente sana",
+   "La exactitud (accuracy), porque resume todo el desempeño",
+   "La exhaustividad (recall), porque dejar pasar un enfermo cuesta más que una falsa alarma",
+   "La especificidad, porque la mayoría de las personas están sanas"
+  ],
+  "correcta": 2,
+  "explicacion": "La métrica se escoge según el costo de cada tipo de error. Un falso negativo deja sin tratamiento a alguien enfermo; un falso positivo lleva a un examen de confirmación. La exactitud además engaña con clases desbalanceadas: si solo el 1 % está enfermo, decir «sano» siempre da 99 % de exactitud y no detecta a nadie.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-7",
+  "tema": "Validación",
+  "enunciado": "¿Por qué se separa un conjunto de validación además del de prueba, si ya hay validación cruzada?",
+  "opciones": [
+   "Porque la validación cruzada no sirve para clasificación",
+   "Para entrenar el modelo final con más datos",
+   "Para tomar las decisiones de modelo y de hiperparámetros sin mirar nunca la prueba",
+   "Porque así se reduce el sobreajuste del modelo automáticamente"
+  ],
+  "correcta": 2,
+  "explicacion": "Todo lo que se escoja mirando unos datos hace que esos datos dejen de ser una estimación imparcial. Las decisiones (qué modelo, qué hiperparámetros, qué imputación) se toman con validación —sea un conjunto aparte o los pliegues de la validación cruzada— y la prueba se mira una sola vez, al final, para reportar.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-8",
+  "tema": "No supervisado",
+  "enunciado": "Corre K-medias dos veces sobre los mismos datos con el mismo K y obtiene dos agrupamientos distintos. ¿Cuál es la forma correcta de proceder?",
+  "opciones": [
+   "Fijar siempre la misma semilla y quedarse con ese resultado",
+   "Repetir con varias inicializaciones distintas y quedarse con la de menor inercia",
+   "Repetir con varias inicializaciones y quedarse con el agrupamiento que más se repita",
+   "Aumentar K hasta que el resultado deje de cambiar"
+  ],
+  "correcta": 1,
+  "explicacion": "K-medias solo garantiza llegar a un mínimo local, y a cuál llega depende de dónde arranquen los centroides. La salida es repetir con inicializaciones distintas y quedarse con la corrida de menor inercia, que es la suma de distancias al cuadrado de cada punto a su centroide. Es lo que hace el parámetro n_init de scikit-learn. Fijar la semilla hace el resultado reproducible, pero no mejor; y quedarse con el que más se repita no es el criterio, porque un mínimo malo puede repetirse muchas veces.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-9",
+  "tema": "Fundamentos",
+  "enunciado": "K-vecinos más cercanos y K-medias se parecen en el nombre y los dos exigen fijar K de antemano. ¿Cuál es la diferencia de fondo?",
+  "opciones": [
+   "KNN es no supervisado y K-medias es supervisado",
+   "KNN predice la etiqueta de una muestra usando datos ya etiquetados; K-medias busca grupos en datos sin etiqueta",
+   "KNN solo sirve para regresión y K-medias solo para clasificación",
+   "En KNN la K es el número de grupos y en K-medias es el número de vecinos"
+  ],
+  "correcta": 1,
+  "explicacion": "El nombre y la K son lo único que comparten. KNN es supervisado: necesita un conjunto etiquetado y clasifica una muestra nueva por mayoría entre sus K vecinos más cercanos. K-medias es no supervisado: no hay etiquetas y busca K grupos agrupando por cercanía. En KNN la K son vecinos; en K-medias, grupos.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ },
+ {
+  "id": "S-10",
+  "tema": "Regularización",
+  "enunciado": "¿Qué distingue a la regularización L1 (lasso) de la L2 (ridge)?",
+  "opciones": [
+   "L1 penaliza los coeficientes al cuadrado y L2 en valor absoluto",
+   "L1 puede dejar coeficientes exactamente en cero, así que también sirve para seleccionar características",
+   "L2 solo se puede usar en clasificación y L1 solo en regresión",
+   "L1 aumenta la varianza del modelo y L2 aumenta el sesgo"
+  ],
+  "correcta": 1,
+  "explicacion": "L1 penaliza la suma de los valores absolutos de los coeficientes y L2 la suma de sus cuadrados. Esa diferencia hace que L1 pueda llevar coeficientes exactamente a cero, lo que equivale a descartar esa característica; L2 los encoge hacia cero sin anularlos. Las dos combaten el sobreajuste y las dos aumentan el sesgo para reducir la varianza.",
+  "fuente": "Curso 2026-3 · refuerzo CS207"
+ }
+]

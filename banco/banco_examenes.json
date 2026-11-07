@@ -1,0 +1,395 @@
+[
+ {
+  "id": "2023-1-1",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes No es una métrica para evaluar el desempeño de un modelo de aprendizaje supervisado?",
+  "opciones": [
+   "R2",
+   "Matriz de confusión",
+   "AUC-ROC",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 3,
+  "explicacion": "El coeficiente de silueta mide qué tan bien separados quedan los grupos en aprendizaje NO supervisado. R², la matriz de confusión y el AUC-ROC sí evalúan modelos supervisados.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-2",
+  "tema": "Validación",
+  "enunciado": "¿Cuál de los siguientes métodos es el menos recomendable para validar un modelo de clasificación binario?",
+  "opciones": [
+   "cros validación usando MCC, como métrica para evaluar",
+   "“Hold-out” usando 75/25, y precisión para evaluar.",
+   "cros validación usando precisión, como métrica para evaluar",
+   "“Hold-out” usando 80/20, y F1 para evaluar."
+  ],
+  "correcta": 1,
+  "explicacion": "Es el menos confiable por dos razones a la vez: una sola partición (Holdout) da un número que depende del azar de esa partición, y la exactitud engaña cuando las clases están desbalanceadas. La validación cruzada con MCC o F1 es más robusta.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-3",
+  "tema": "No supervisado",
+  "enunciado": "¿Cuál de los siguientes métodos sería el más recomendable para definir el número de grupos ideal en un problema de aprendizaje no supervisado?",
+  "opciones": [
+   "Usar la cantidad de grupos con el mayor coeficiente de silueta y buscar que coincida con el criterio del codo de inercia.",
+   "Usar la cantidad de grupos con el menor coeficiente de silueta y buscar que coincida con el criterio del codo de inercia.",
+   "Usar la cantidad de grupos con el mayor coeficiente de silueta y buscar que coincida con el menor valor del codo de inercia.",
+   "Usar la cantidad de grupos con el menor coeficiente de silueta y buscar que coincida con el mayor valor del codo de inercia."
+  ],
+  "correcta": 0,
+  "explicacion": "Se busca el K con el MAYOR coeficiente de silueta (más alto es mejor) y se contrasta con el codo de la inercia. Los dos criterios deben apuntar al mismo K.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-4",
+  "tema": "Datos faltantes",
+  "enunciado": "¿Cuenta con un conjunto de datos con una alta correlación entre sus características, sin embargo ha detectado que cuenta con algunos datos faltantes, ¿cómo llenaría estos valores?",
+  "opciones": [
+   "Con valores aleatorios, al ser datos correlacionados los valores aleatorios siempre son no correlacionados lo que añade información al problema",
+   "El dato faltante en cada muestra se llena con el promedio de la característica",
+   "El dato faltante en cada muestra se llena con el promedio de la muestra",
+   "Se plantea una regresión usando las demás características para rellenar el dato faltante."
+  ],
+  "correcta": 3,
+  "explicacion": "Si las características están muy correlacionadas, las demás columnas contienen información sobre la que falta: una regresión la aprovecha. Rellenar con el promedio de la característica ignora esa correlación, y promediar la MUESTRA mezcla variables de unidades distintas.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-5",
+  "tema": "Validación",
+  "enunciado": "¿Cuál No es un propósito de realizar una validación cruzada o cros validación?",
+  "opciones": [
+   "Evaluar el desempeño predictivo de un modelo entrenado a partir de todo el conjunto de datos",
+   "Prevenir el sobreajuste del modelo a los datos",
+   "Regularizar el modelo previniendo que la tasa de aprendizaje llegue a un punto donde afecte el sesgo del modelo y por ende su varianza.",
+   "Se le entrega al cliente un modelo entrenado en un conjunto mayor de datos comparado a otros métodos."
+  ],
+  "correcta": 2,
+  "explicacion": "La validación cruzada es un método de EVALUACIÓN, no de regularización: no toca la tasa de aprendizaje ni penaliza los coeficientes del modelo.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-6",
+  "tema": "Regularización",
+  "enunciado": "¿Cuál de las siguientes afirmaciones sobre la regularización es correcta? (NOTA: definiendo lambda “λ” como en clase; el término que acompaña a la suma de coeficientes de regularización)",
+  "opciones": [
+   "El uso de un valor de lambda demasiado pequeño puede hacer que su hipótesis no se ajuste a los datos. (underfit)",
+   "El uso de un valor de lambda demasiado grande puede hacer que su hipótesis sobreajuste los datos. (overfit)",
+   "El uso de un valor de lambda muy grande puede dañar el desempeño de su métrica",
+   "El uso de un valor de lambda demasiado pequeño o cero puede hacer que su hipótesis sobreajuste los datos."
+  ],
+  "correcta": 3,
+  "explicacion": "λ pequeño o cero deja el modelo sin penalización, así que puede sobreajustar. Es al revés con λ grande: el modelo queda demasiado restringido y subajusta.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-7",
+  "tema": "No supervisado",
+  "enunciado": "Supongamos que aplica el algoritmo K-means con un número de clusters (K) igual a tres en un conjunto de datos bidimensional. Después de la ejecución del algoritmo, obtienes los siguientes centroides en orden: (2, 4), (6, 8) y (10, 12). ¿A qué cluster pertenecería el punto de datos (5, 7), suponiendo una métrica euclideana?",
+  "opciones": [
+   "Cluster 1",
+   "Cluster 2",
+   "Cluster 3",
+   "No hay datos suficientes. No es posible a partir de los centroides encontrar los grupos resultantes."
+  ],
+  "correcta": 1,
+  "explicacion": "K-medias asigna cada punto al centroide más cercano. Se calcula la distancia del punto a (2,4), (6,8) y (10,12) y gana el segundo.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-8",
+  "tema": "No supervisado",
+  "enunciado": "¿En cuál de los siguientes casos la agrupación de K-medias se vería menos afectada? 1. Puntos de datos con unos pocos valores atípicos (outliers) 2. Puntos de datos con diferentes densidades (clusteres muy pequeños para una clase y comparativamente clusteres muy grandes para otras clases) 3. Puntos de datos con formas no convexas (es decir, unas contenidas entre otras) 4. Puntos de datos con dimensiones altas (alta dimensionalidad) 5. Puntos de datos con distribución no lineal en los clusters",
+  "opciones": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "correcta": 3,
+  "explicacion": "K-medias se ve menos afectada por la ALTA DIMENSIONALIDAD que por las otras situaciones. Los atípicos corren los centroides, las densidades distintas y las formas no convexas rompen el supuesto de grupos esféricos.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-9",
+  "tema": "PCA",
+  "enunciado": "¿Cuál de las siguientes es una forma razonable de seleccionar el número de componentes principales \"k\"?",
+  "opciones": [
+   "Usar el método de la cros validación y tomar el mejor resultado como k",
+   "Elija que k sea el 99% de m (k = 0.99 * m; redondeado al número entero más cercano) donde m es la varianza del componente principal",
+   "Elija k para que sea el valor más pequeño de modo que se retenga al menos el 99% de la varianza explicada",
+   "Elija k para que sea el valor más grande posible de modo que se mantenga más del 99% de la varianza"
+  ],
+  "correcta": 2,
+  "explicacion": "Se escoge el k MÁS PEQUEÑO que conserve al menos el 99 % de la varianza explicada: es el mínimo número de componentes que mantiene la información deseada.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-10",
+  "tema": "Optimización",
+  "enunciado": "Suponga que usted usa el método del descenso del gradiente para resolver un problema durante 1500000 iteraciones con tasa de aprendizaje “learning-rate” α = 0.003 y calcula su costo J(θ) después de cada iteración. Encuentra que el valor de J(θ) disminuye casi de manera lineal. En base a esto; ¿cuál de las siguientes conclusiones parece más plausible?",
+  "opciones": [
+   "Es probable que hubiera llegado a una solución, Pare de entrenar.",
+   "Es probable que hubiera llegado a una solución, pero puede mejorarla reduciendo más α. Y busque que la gráfica del costo no sea una línea sino una curva que converja a 0.",
+   "Es probable que No hubiera llegado a una solución, Pare de entrenar.",
+   "Es probable que No hubiera llegado a una solución, aumente el valor de alfa y busque que la gráfica del costo no sea una línea sino una curva que converja a 0."
+  ],
+  "correcta": 3,
+  "explicacion": "Si tras 1,5 millones de iteraciones el costo todavía baja de forma casi lineal, el descenso va demasiado lento: α es muy pequeño. Hay que aumentarlo y buscar que la curva se doble y se aplane.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-11",
+  "tema": "Clasificación",
+  "enunciado": "Suponga que ha entrenado un clasificador de regresión logística y con este predice un nuevo ejemplo x con una hipótesis ho(x) = 0.2. Esto significa:",
+  "opciones": [
+   "que 1 es la probabilidad asociada de que esa \"x\" sea igual a 0.2 dado un θ parametrizado por \"y\"",
+   "que 0.2 es la probabilidad asociada de que esa \"y\" sea igual a 1 dado un x parametrizado por θ",
+   "que 0.2 es la probabilidad asociada de que esa \"y\" sea igual a 0 dado un x parametrizado por θ",
+   "que 0.2 es la probabilidad asociada de que esa \"x\" sea igual a 1 dado un y parametrizado por θ"
+  ],
+  "correcta": 1,
+  "explicacion": "En regresión logística la hipótesis devuelve P(y = 1 | x; θ). Si vale 0,2, hay 20 % de probabilidad de que la clase sea 1 (y por tanto 80 % de que sea 0).",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-12",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de las siguientes afirmaciones es falsa para un método no-supervisado?",
+  "opciones": [
+   "Requiere datos etiquetados para entrenar un modelo.",
+   "Agrupa los puntos de datos basándose en la similitud de sus características.",
+   "No utiliza información de salida conocida para realizar predicciones.",
+   "Explora patrones y estructuras en los datos sin una guía externa."
+  ],
+  "correcta": 0,
+  "explicacion": "Lo que define a un método no supervisado es justamente que NO necesita etiquetas. Las otras tres afirmaciones sí lo describen.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-13",
+  "tema": "Optimización",
+  "enunciado": "Para optimizar su función objetivo; está realizando un descenso de gradiente utilizando todo el conjunto de entrenamiento (NO un descenso de gradiente estocástico por lotes o batches) . ¿Es necesario mezclar (shuffle) su conjunto de entrenamiento?",
+  "opciones": [
+   "Si. Si no lo hace; la optimización oscilará alrededor del mínimo al final del entrenamiento.",
+   "Sí; para ayudar a que el modelo se generalice al conjunto de datos de entrenamiento y que cada lote contribuya de manera aleatoria al resultado final de la época.",
+   "No; no es necesario porque el conjunto de datos ya puede considerarse barajado del proceso de recopilación de datos.",
+   "No; porque cada paso del algoritmo del descenso del gradiente pasa por todo el conjunto de datos de todos modos y el orden no importa."
+  ],
+  "correcta": 3,
+  "explicacion": "Con descenso de gradiente por lotes completos, cada paso recorre todo el conjunto antes de actualizar, así que el orden de las filas no cambia el resultado.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-14",
+  "tema": "Optimización",
+  "enunciado": "Para optimizar su función objetivo; está realizando un descenso de gradiente estocástico utilizando lotes el conjunto de entrenamiento (NO un descenso de gradiente que usa todo el conjunto de datos) . ¿Es necesario mezclar (shuffle) su conjunto de entrenamiento?",
+  "opciones": [
+   "Si. Si no lo hace; la optimización nunca llegará a un mínimo global",
+   "Sí; para ayudar a que el modelo se generalice al conjunto de datos de entrenamiento y que cada lote contribuya de manera aleatoria al resultado final de la época.",
+   "No; no es necesario porque el conjunto de datos ya puede considerarse barajado del proceso de recopilación de datos sin importar cómo se seleccionen los lotes.",
+   "No; porque cada paso del algoritmo del descenso del gradiente pasa por todo el conjunto de datos de todos modos y el orden no importa."
+  ],
+  "correcta": 1,
+  "explicacion": "Con descenso estocástico por lotes el orden SÍ importa: si no se mezcla, cada lote puede quedar sesgado (por ejemplo todo de una misma clase) y las actualizaciones dejan de ser representativas.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-15",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de las siguientes afirmaciones describe correctamente el sobreajuste (overfitting) y el subajuste (underfitting)?",
+  "opciones": [
+   "El sobreajuste ocurre cuando el modelo se ajusta demasiado a los datos de entrenamiento y no puede generalizar bien a nuevos datos. El subajuste, por otro lado, ocurre cuando el modelo es demasiado simple y no captura bien la complejidad de los datos. Para combatir el sobreajuste, se pueden utilizar técnicas como la regularización, la validación cruzada y el aumento de datos. Para combatir el subajuste, se puede aumentar la complejidad del modelo, agregar más características o recopilar más datos de entrenamiento.",
+   "El sobreajuste ocurre cuando el modelo no se ajusta lo suficiente a los datos de entrenamiento y no puede capturar las relaciones complejas presentes. El subajuste, por otro lado, ocurre cuando el modelo se ajusta demasiado a los datos de entrenamiento y no puede generalizar a nuevos datos. Para combatir el sobreajuste, se pueden utilizar técnicas como el aumento de datos, el uso de modelos más complejos o la recopilación de más datos. Para combatir el subajuste, se puede utilizar la regularización, reducir la complejidad del modelo o realizar una validación cruzada más rigurosa.",
+   "El sobreajuste ocurre cuando el modelo es demasiado simple y no puede capturar la complejidad de los datos. El subajuste, por otro lado, ocurre cuando el modelo se ajusta demasiado a los datos de entrenamiento y no puede generalizar bien. Para combatir el sobreajuste, se pueden utilizar técnicas como el aumento de datos, el uso de modelos más complejos o la recopilación de más datos. Para combatir el subajuste, se puede utilizar la regularización, reducir la complejidad del modelo o realizar una validación cruzada más rigurosa.",
+   "El sobreajuste ocurre cuando el modelo se ajusta bien a los datos de entrenamiento pero no puede generalizar a nuevos datos. El subajuste, por otro lado, ocurre cuando el modelo es demasiado complejo y se ajusta demasiado a los datos de entrenamiento. Para combatir el sobreajuste, se pueden utilizar técnicas como la validación cruzada, la reducción de la complejidad del modelo o el uso de conjuntos de datos más grandes. Para combatir el subajuste, se puede aumentar la complejidad del modelo, agregar más características o recopilar más datos de entrenamiento."
+  ],
+  "correcta": 0,
+  "explicacion": "Sobreajuste: el modelo memoriza el entrenamiento y falla con datos nuevos. Subajuste: el modelo es demasiado simple y falla incluso en el entrenamiento.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-16",
+  "tema": "PCA",
+  "enunciado": "La maldición de la dimensionalidad (curse of dimensionality, en inglés) se refiere a los desafíos y problemas que surgen al tratar con conjuntos de datos de alta dimensionalidad. A medida que aumenta el número de características o dimensiones en un conjunto de datos, surgen varios problemas, como el aumento en la complejidad computacional, la escasez de datos en el espacio de alta dimensión y la dificultad para encontrar relaciones y patrones significativos. ¿Cómo se combate la maldición de la dimensionalidad (curse of dimensionality)?",
+  "opciones": [
+   "Seleccionando todas las características disponibles para aprovechar al máximo la información.",
+   "Extrayendo características adicionales para aumentar la dimensionalidad y capturar más información.",
+   "Reduciendo la dimensionalidad mediante técnicas como PCA.",
+   "Aplicando la regularización para aumentar la complejidad del modelo y ajustarse mejor a los datos."
+  ],
+  "correcta": 2,
+  "explicacion": "La maldición de la dimensionalidad se combate REDUCIENDO dimensiones, por ejemplo con PCA. Agregar características empeora el problema.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-17",
+  "tema": "Clasificación",
+  "enunciado": "Cual de las siguientes NO es una desventaja de la estrategia de clasificación multiclase One vs One.",
+  "opciones": [
+   "La escala de los valores de confianza puede diferir entre diferentes clasificadores binarios; por lo que el resultado puede no ser comparable entre diferentes clasificadores",
+   "El número de clasificadores que toca implementar es mayor que en otras estrategias como OvA; pero estos sin más simples si el número de clases es grande",
+   "Se puede llegar a soluciones ambiguas",
+   "La distribución de las clases de cada clasificador binario en OvO está siempre desequilibrada en conjuntos que inicialmente estaban bien equilibrados"
+  ],
+  "correcta": 3,
+  "explicacion": "Esa NO es una desventaja porque es falsa: en OvO cada clasificador binario se entrena solo con las muestras de dos clases, así que si el conjunto estaba balanceado los subproblemas también lo están. OvA sí sufre desbalance.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-18",
+  "tema": "Fundamentos",
+  "enunciado": "¿Cuál de los siguientes problemas no puede ser resuelto con una técnica de aprendizaje supervisado?",
+  "opciones": [
+   "Clasificación de imágenes en categorías predefinidas.",
+   "Predicción del precio de una vivienda en función de sus características.",
+   "Agrupación de documentos de texto según su contenido.",
+   "Detección de spam en correos electrónicos."
+  ],
+  "correcta": 2,
+  "explicacion": "Agrupar documentos por contenido, sin etiquetas previas, es aprendizaje NO supervisado. Los otros tres tienen una etiqueta conocida que el modelo aprende a predecir.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-19",
+  "tema": "PCA",
+  "enunciado": "En cuál de los siguientes casos no es útil el PCA?",
+  "opciones": [
+   "Reducción de la dimensionalidad en conjuntos de datos con alta correlación entre características.",
+   "Visualización de datos de alta dimensión en un espacio de menor dimensión.",
+   "Evaluar la pertinencia de características individuales en un conjunto de datos",
+   "Reducción de la dimensionalidad en conjuntos de datos con baja correlación entre características."
+  ],
+  "correcta": 3,
+  "explicacion": "PCA aprovecha la correlación entre características para resumirlas. Si hay poca correlación, cada componente aporta poco y no se gana casi nada al reducir.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2023-1-20",
+  "tema": "Regresión",
+  "enunciado": "En una regresión; se le conoce al valor Residual como el valor real menos el valor predicho (estrictamente en ese orden). Al graficar el histograma del valor residual; observamos que la distribución se mueve a la izquierda del cero y tiene un valor medio negativo. ¿Qué puede significar esto?",
+  "opciones": [
+   "Esto significa que el modelo está sobrestimando lo que quiere decir que tiene un \"bias\" sesgo positivo",
+   "Esto significa que el modelo está atascado en los mínimos locales. Toca reentrenar.",
+   "\"Esto significa que el modelo está subestimando lo que quiere decir que tiene un \"bias\" o sesgo negativo\"",
+   "Esto significa que el modelo está atascado en máximos globales"
+  ],
+  "correcta": 0,
+  "explicacion": "Residual = real − predicho. Si los residuales son en promedio negativos, el predicho es mayor que el real: el modelo SOBRESTIMA.",
+  "fuente": "Examen final 2023-1"
+ },
+ {
+  "id": "2022-3-1",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes NO es una métrica para evaluar el desempeño de una regresión?",
+  "opciones": [
+   "R^2",
+   "Raíz cuadrada del error cuadrático medio (RMSE)",
+   "Error cuadrático medio (MSE)",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 3,
+  "explicacion": "El coeficiente de silueta es una métrica de agrupamiento (no supervisado). R², RMSE y MSE sí evalúan regresiones.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-2",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes es una herramienta para evaluar el desempeño de un clasificador?",
+  "opciones": [
+   "R^2",
+   "Matriz de confusión",
+   "Matriz de costos y beneficios",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 1,
+  "explicacion": "La matriz de confusión resume aciertos y errores por clase y de ella salen exactitud, precisión, sensibilidad, F1 y MCC.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-3",
+  "tema": "Métricas",
+  "enunciado": "¿Cuál de las siguientes es una herramienta para evaluar el desempeño de la clasificación no supervisada?",
+  "opciones": [
+   "R^2",
+   "Matriz de confusión",
+   "Raíz cuadrada del error cuadrático medio (RMSE)",
+   "Coeficiente de silueta"
+  ],
+  "correcta": 3,
+  "explicacion": "El coeficiente de silueta evalúa qué tan compactos y separados quedan los grupos, sin necesitar etiquetas.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-4",
+  "tema": "Validación",
+  "enunciado": "¿Cuál de las siguientes es una buena particularidad de un conjunto de datos de prueba?",
+  "opciones": [
+   "Cuenta con muchas muestras y pocas características",
+   "Cuenta con pocas muestras y muchas características",
+   "Es representativo de por lo menos una de las más de 3 clases del conjunto de datos.",
+   "Es lo suficientemente grande para producir resultados estadisticamente significativos y representar todas sus clases"
+  ],
+  "correcta": 3,
+  "explicacion": "Un buen conjunto de prueba debe ser grande para que el resultado sea estadísticamente significativo y debe contener TODAS las clases.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-5",
+  "tema": "Validación",
+  "enunciado": "¿Cuál es el propósito de realizar una validación cruzada?",
+  "opciones": [
+   "Evaluar el desempeño predictivo de un modelo entrenado a partir de todo el conjunto de datos",
+   "Evaluar en un solo dataset de validación y entrenar en el mismo dataset",
+   "Entrenar varias veces para disminuir la verosimilitud de la muestra porcentual de los valores propios",
+   "Encontrar los Valores propios de la tangente de Mobius"
+  ],
+  "correcta": 0,
+  "explicacion": "La validación cruzada estima el desempeño que tendría el modelo entrenado con todos los datos, usando varias particiones en vez de una sola.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-6",
+  "tema": "Regularización",
+  "enunciado": "¿Cuál de las siguientes afirmaciones sobre la regularización NO es correcta? (NOTA: definiendo lambda “λ” como en clase; el término que acompaña a la suma de coeficientes de regularización)",
+  "opciones": [
+   "El uso de un valor de lambda demasiado grande puede hacer que su hipótesis no se ajuste a los datos. (underfit)",
+   "El uso de un valor de lambda demasiado grande puede hacer que su hipótesis sobreajuste los datos. (overfit)",
+   "El uso de un valor de lambda muy grande puede dañar el desempeño de su hipótesis.",
+   "El uso de un valor de lambda demasiado pequeño o cero puede hacer que su hipótesis sobreajuste los datos."
+  ],
+  "correcta": 1,
+  "explicacion": "Es la afirmación FALSA: un λ grande restringe el modelo y produce subajuste, nunca sobreajuste.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-12",
+  "tema": "Regresión",
+  "enunciado": "El objetivo de la regresión es:",
+  "opciones": [
+   "Crear un modelo que prediga de manera precisa los valores en un conjunto continuo de la variable dependiente para un conjunto de características de entrada",
+   "Crear un modelo que prediga de manera precisa los valores en un conjunto discreto y finito de valores de la variable dependiente para un conjunto de características de entrada",
+   "Agrupar el problema en un conjunto infinito y real de características.",
+   "Crear una función que siempre se representa en el plano cartesiano como una línea recta."
+  ],
+  "correcta": 0,
+  "explicacion": "La regresión predice una variable dependiente CONTINUA. Si el conjunto de valores es discreto y finito, el problema es de clasificación.",
+  "fuente": "Examen final 2022-3"
+ },
+ {
+  "id": "2022-3-16",
+  "tema": "Datos faltantes",
+  "enunciado": "Usted cuenta con un conjunto de datos con varias variables usuales en cultivos, el conjunto de datos cuenta con 7 características y una etiqueta con 5 clases. Sin embargo, se ha percatado usted que faltan algunas características de las filas 1 y 3 para algunas muestras, pero todas se encuentran etiquetadas, cuál de las siguientes afirmaciones NO sería una manera adecuada de proceder",
+  "opciones": [
+   "Llene los datos faltantes con el promedio por columnas de la matriz en la forma estándar.",
+   "Llene los datos faltantes con el promedio por columnas de la matriz en la forma estándar teniendo en cuenta para el promedio las características con las etiquetas de la misma clase.",
+   "Use un método de regresión para a partir de las demás características estimar las dos posibles faltantes.",
+   "Llene los datos faltantes con el promedio por filas de la matriz en la forma estándar."
+  ],
+  "correcta": 3,
+  "explicacion": "La pregunta pide la opción que NO sirve. Promediar por FILAS mezcla variables de unidades distintas (humedad con pH, por ejemplo) y el promedio no significa nada. Las otras tres sí son razonables: el promedio por columnas es la imputación simple de siempre, hacerlo por clase la refina, y estimar el faltante con una regresión sobre las demás columnas es imputación multivariada. Ojo con esta última: es justamente la respuesta CORRECTA de la 2023-1-4, donde la pregunta está formulada al derecho.",
+  "fuente": "Examen final 2022-3"
+ }
+]

@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulacro IA</title>
+<meta name="description" content="Simulacro de examen del curso de Inteligencia Artificial, Pontificia Universidad Javeriana.">
+<style>
+  :root{
+    color-scheme: light;
+    --azul:#2C5697; --azul-claro:#C9D7EE; --tinte:#F0F4FA;
+    --fondo:#fcfcfb; --tarjeta:#ffffff; --borde:#e3e2dd;
+    --texto:#1a1a19; --suave:#52514e;
+    --ok:#1baf7a; --mal:#e34948; --ambar:#F2B84B;
+    --encabezado:#2C5697; --sobre-azul:#ffffff;
+    --radio:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --azul:#6f9ddb; --azul-claro:#24364f; --tinte:#1f242c;
+      --fondo:#15171a; --tarjeta:#1d2024; --borde:#30343a;
+      --texto:#f0efec; --suave:#b8b7b0;
+      --encabezado:#1b2b45; --sobre-azul:#10141a;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--texto);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       line-height:1.55;-webkit-font-smoothing:antialiased}
+  .envoltura{max-width:820px;margin:0 auto;padding:16px}
+  header{background:var(--encabezado);color:#fff;padding:18px 0;margin-bottom:22px}
+  header .envoltura{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-top:0;padding-bottom:0}
+  header h1{font-size:1.15rem;margin:0;font-weight:700}
+  header span{font-size:.85rem;opacity:.85}
+  .tarjeta{background:var(--tarjeta);border:1px solid var(--borde);border-radius:var(--radio);padding:22px;margin-bottom:16px}
+  h2{margin:0 0 12px;font-size:1.3rem;line-height:1.3}
+  p{margin:0 0 12px}
+  .tenue{color:var(--suave);font-size:.92rem}
+  button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid transparent;padding:11px 20px;transition:filter .15s}
+  button:hover:not(:disabled){filter:brightness(1.08)}
+  button:disabled{cursor:default;opacity:.55}
+  .primario{background:var(--azul);color:var(--sobre-azul);font-weight:600}
+  .secundario{background:transparent;color:var(--azul);border-color:var(--borde);font-weight:600}
+  .fila{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .entre{justify-content:space-between}
+  /* progreso */
+  .barra{height:7px;background:var(--borde);border-radius:99px;overflow:hidden;margin:14px 0 4px}
+  .barra i{display:block;height:100%;background:var(--azul);transition:width .25s}
+  .meta{display:flex;justify-content:space-between;font-size:.85rem;color:var(--suave)}
+  /* opciones */
+  .opcion{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;
+          background:var(--tarjeta);border:1.5px solid var(--borde);border-radius:12px;
+          padding:13px 15px;margin-bottom:9px;color:var(--texto);font-weight:400}
+  .opcion:hover:not(:disabled){border-color:var(--azul);background:var(--tinte)}
+  .opcion.elegida{border-color:var(--azul);background:var(--azul-claro)}
+  .opcion.correcta{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+  .opcion.incorrecta{border-color:var(--mal);background:color-mix(in srgb,var(--mal) 14%,transparent)}
+  .letra{flex:0 0 26px;height:26px;border-radius:50%;background:var(--borde);color:var(--texto);
+         display:grid;place-items:center;font-size:.82rem;font-weight:700;margin-top:1px}
+  .opcion.elegida .letra,.opcion.correcta .letra{background:var(--azul);color:var(--sobre-azul)}
+  .opcion.correcta .letra{background:var(--ok)}
+  .opcion.incorrecta .letra{background:var(--mal);color:#fff}
+  .etiqueta{display:inline-block;background:var(--tinte);color:var(--suave);border:1px solid var(--borde);
+            border-radius:99px;padding:2px 11px;font-size:.78rem;margin-bottom:12px}
+  /* resultados */
+  .puntaje{font-size:3.2rem;font-weight:800;color:var(--azul);line-height:1;margin:4px 0}
+  .explica{background:var(--tinte);border-left:3px solid var(--azul);border-radius:0 10px 10px 0;
+           padding:11px 15px;margin-top:10px;font-size:.94rem}
+  .revision{border-top:1px solid var(--borde);padding-top:18px;margin-top:18px}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th,td{text-align:left;padding:7px 4px;border-bottom:1px solid var(--borde)}
+  th{color:var(--suave);font-weight:600;font-size:.84rem}
+  td:last-child,th:last-child{text-align:right}
+  .mini{height:7px;background:var(--borde);border-radius:99px;overflow:hidden;width:110px;display:inline-block;vertical-align:middle}
+  .mini i{display:block;height:100%;background:var(--ok)}
+  .oculto{display:none}
+  footer{color:var(--suave);font-size:.82rem;text-align:center;padding:26px 16px 40px}
+  footer a{color:var(--azul)}
+  @media (max-width:560px){ .envoltura{padding:12px} .tarjeta{padding:17px} .puntaje{font-size:2.6rem} }
+</style>
+</head>
+<body>
+<header><div class="envoltura">
+  <h1>Simulacro de examen · Inteligencia Artificial</h1>
+  <span>Pontificia Universidad Javeriana</span>
+</div></header>
+
+<main class="envoltura">
+
+  <section id="inicio" class="tarjeta">
+    <h2>Practique antes del examen</h2>
+    <p>Cada intento arma un examen distinto con <strong>15 preguntas al azar</strong>. Al terminar verá en qué acertó, en qué falló y por qué.</p>
+    <p class="tenue" id="resumen-banco"></p>
+    <div class="fila" style="margin-top:18px">
+      <button class="primario" id="btn-empezar">Comenzar simulacro</button>
+      <label class="tenue fila" style="gap:7px">
+        <input type="checkbox" id="chk-reloj" checked> Con reloj (1 hora)
+      </label>
+    </div>
+  </section>
+
+  <section id="examen" class="oculto">
+    <div class="tarjeta">
+      <span class="etiqueta" id="tema"></span>
+      <h2 id="enunciado"></h2>
+      <div id="opciones"></div>
+      <div class="barra"><i id="progreso"></i></div>
+      <div class="meta">
+        <span id="contador"></span>
+        <span id="reloj"></span>
+      </div>
+    </div>
+    <div class="fila entre">
+      <button class="secundario" id="btn-atras">← Anterior</button>
+      <button class="primario" id="btn-siguiente">Siguiente →</button>
+    </div>
+  </section>
+
+  <section id="resultados" class="oculto"></section>
+
+</main>
+
+<footer>
+  Material del curso de Inteligencia Artificial · Francisco Carlos Calderón B., Ph.D.<br>
+  Preguntas de los exámenes del curso, del material de clase y adaptadas del
+  <a href="https://github.com/Ebazhanov/linkedin-skill-assessments-quizzes" target="_blank" rel="noopener">banco público de Ebazhanov</a> (AGPL-3.0).
+</footer>
+
+<script src="preguntas.js"></script>
+<script>
+const TOTAL = 15, SEGUNDOS = 3600;
+let examen = [], actual = 0, respuestas = [], restante = SEGUNDOS, cronometro = null;
+
+const $ = (id) => document.getElementById(id);
+
+// Los temas finos se agrupan en áreas para que el informe final sea legible
+const AREA = {
+  "Fundamentos": "Fundamentos",
+  "Métricas": "Evaluación y validación", "Validación": "Evaluación y validación",
+  "Selección de modelos": "Evaluación y validación",
+  "Datos faltantes": "Datos y preprocesamiento", "Datos": "Datos y preprocesamiento",
+  "PCA": "Datos y preprocesamiento",
+  "Clasificación": "Modelos supervisados", "Regresión": "Modelos supervisados",
+  "Ensambles": "Modelos supervisados", "Regularización": "Modelos supervisados",
+  "Redes neuronales": "Redes neuronales", "Optimización": "Redes neuronales",
+  "No supervisado": "No supervisado y series", "Series de tiempo": "No supervisado y series",
+};
+const areaDe = (q) => AREA[q.tema] || "Fundamentos";
+const LETRAS = "ABCDEFGH";
+
+function mezclar(a){
+  const c = a.slice();
+  for (let i = c.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [c[i], c[j]] = [c[j], c[i]];
+  }
+  return c;
+}
+
+function armarExamen(){
+  // reparte entre áreas para que el simulacro no quede concentrado en una sola
+  const porArea = {};
+  for (const q of PREGUNTAS) (porArea[areaDe(q)] ||= []).push(q);
+  const pilas = mezclar(Object.keys(porArea)).map(a => mezclar(porArea[a]));
+  const elegidas = [];
+  let i = 0;
+  while (elegidas.length < Math.min(TOTAL, PREGUNTAS.length)){
+    const pila = pilas[i % pilas.length];
+    if (pila.length) elegidas.push(pila.pop());
+    i++;
+  }
+  // baraja también el orden de las opciones de cada pregunta
+  return mezclar(elegidas).map(q => {
+    const orden = mezclar(q.opciones.map((_, k) => k));
+    return {...q, opciones: orden.map(k => q.opciones[k]),
+            correcta: orden.indexOf(q.correcta)};
+  });
+}
+
+function pintarPregunta(){
+  const q = examen[actual];
+  $("tema").textContent = q.tema;
+  $("enunciado").textContent = q.enunciado;
+  const cont = $("opciones");
+  cont.innerHTML = "";
+  q.opciones.forEach((texto, k) => {
+    const b = document.createElement("button");
+    b.className = "opcion" + (respuestas[actual] === k ? " elegida" : "");
+    b.innerHTML = `<span class="letra">${LETRAS[k]}</span><span></span>`;
+    b.lastElementChild.textContent = texto;
+    b.onclick = () => { respuestas[actual] = k; pintarPregunta(); };
+    cont.appendChild(b);
+  });
+  $("progreso").style.width = ((actual + 1) / examen.length * 100) + "%";
+  $("contador").textContent = `Pregunta ${actual + 1} de ${examen.length}` +
+      ` · respondidas ${respuestas.filter(r => r !== null).length}`;
+  $("btn-atras").disabled = actual === 0;
+  $("btn-siguiente").textContent = actual === examen.length - 1 ? "Terminar y calificar" : "Siguiente →";
+}
+
+function tictac(){
+  restante--;
+  const m = String(Math.floor(restante / 60)).padStart(2, "0");
+  const s = String(restante % 60).padStart(2, "0");
+  $("reloj").textContent = `⏱ ${m}:${s}`;
+  if (restante <= 0){ clearInterval(cronometro); calificar(); }
+}
+
+function empezar(){
+  examen = armarExamen();
+  respuestas = new Array(examen.length).fill(null);
+  actual = 0;
+  $("inicio").classList.add("oculto");
+  $("resultados").classList.add("oculto");
+  $("examen").classList.remove("oculto");
+  clearInterval(cronometro);
+  if ($("chk-reloj").checked){
+    restante = SEGUNDOS;
+    cronometro = setInterval(tictac, 1000);
+    tictac();
+  } else {
+    $("reloj").textContent = "";
+  }
+  pintarPregunta();
+  window.scrollTo(0, 0);
+}
+
+function calificar(){
+  clearInterval(cronometro);
+  const aciertos = examen.filter((q, i) => respuestas[i] === q.correcta).length;
+  const pct = Math.round(aciertos / examen.length * 100);
+
+  // desempeño por tema
+  const areas = {};
+  examen.forEach((q, i) => {
+    const t = (areas[areaDe(q)] ||= {bien: 0, total: 0});
+    t.total++;
+    if (respuestas[i] === q.correcta) t.bien++;
+  });
+  const filas = Object.entries(areas).sort((a, b) => a[1].bien / a[1].total - b[1].bien / b[1].total)
+    .map(([t, d]) => {
+      const p = Math.round(d.bien / d.total * 100);
+      return `<tr><td>${t}</td>
+        <td><span class="mini"><i style="width:${p}%;background:${p >= 60 ? 'var(--ok)' : 'var(--mal)'}"></i></span></td>
+        <td>${d.bien}/${d.total}</td></tr>`;
+    }).join("");
+
+  const juicio = pct >= 80 ? "Va muy bien. Repase solo los temas de abajo que quedaron flojos."
+              : pct >= 60 ? "Va por buen camino, pero hay temas que conviene repasar."
+              : "Conviene repasar con calma antes del examen. Empiece por las áreas de arriba de la tabla.";
+
+  const revision = examen.map((q, i) => {
+    const dada = respuestas[i];
+    const bien = dada === q.correcta;
+    const ops = q.opciones.map((texto, k) => {
+      let cls = "opcion";
+      if (k === q.correcta) cls += " correcta";
+      else if (k === dada) cls += " incorrecta";
+      const esc = document.createElement("span");
+      esc.textContent = texto;
+      return `<div class="${cls}"><span class="letra">${LETRAS[k]}</span><span>${esc.innerHTML}</span></div>`;
+    }).join("");
+    const enun = document.createElement("span"); enun.textContent = q.enunciado;
+    const expl = document.createElement("span"); expl.textContent = q.explicacion;
+    return `<div class="tarjeta">
+      <span class="etiqueta">${q.tema} · ${bien ? "correcta" : (dada === null ? "sin responder" : "incorrecta")}</span>
+      <h2 style="font-size:1.05rem">${i + 1}. ${enun.innerHTML}</h2>
+      ${ops}
+      <div class="explica"><strong>Por qué:</strong> ${expl.innerHTML}</div>
+    </div>`;
+  }).join("");
+
+  $("examen").classList.add("oculto");
+  const r = $("resultados");
+  r.innerHTML = `
+    <div class="tarjeta">
+      <p class="tenue" style="margin:0">Resultado</p>
+      <div class="puntaje">${aciertos} / ${examen.length}</div>
+      <p class="tenue">${pct} % de aciertos. ${juicio}</p>
+      <table style="margin-top:16px">
+        <tr><th>Área</th><th></th><th>Aciertos</th></tr>
+        ${filas}
+      </table>
+      <div class="fila" style="margin-top:20px">
+        <button class="primario" id="btn-otra">Hacer otro simulacro</button>
+        <button class="secundario" id="btn-ver">Ver la revisión ↓</button>
+      </div>
+    </div>
+    <div class="revision">${revision}</div>`;
+  r.classList.remove("oculto");
+  $("btn-otra").onclick = empezar;
+  $("btn-ver").onclick = () => r.querySelector(".revision").scrollIntoView({behavior: "smooth"});
+  window.scrollTo(0, 0);
+}
+
+$("btn-empezar").onclick = empezar;
+$("btn-atras").onclick = () => { if (actual > 0){ actual--; pintarPregunta(); window.scrollTo(0,0);} };
+$("btn-siguiente").onclick = () => {
+  if (actual === examen.length - 1) calificar();
+  else { actual++; pintarPregunta(); window.scrollTo(0,0); }
+};
+
+const nAreas = new Set(PREGUNTAS.map(areaDe)).size;
+$("resumen-banco").textContent =
+  `El banco tiene ${PREGUNTAS.length} preguntas repartidas en ${nAreas} áreas. Las opciones también se barajan en cada intento.`;
+</script>
+</body>
+</html>
